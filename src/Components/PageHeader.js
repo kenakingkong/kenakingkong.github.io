@@ -6,7 +6,7 @@ class PageHeader extends Component {
 
         return(
             <div id="pageHeader" className={style.pageTitle}>
-                <h1 style={{textAlign:'center'}}>{this.props.pageTitle}</h1>
+                <h1 style={{textAlign:'center', padding:'20px 20px', 'font-size':'30px'}}>{this.props.pageTitle}</h1>
             </div>
         );
     }

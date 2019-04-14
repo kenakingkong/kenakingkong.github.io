@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import "antd/dist/antd.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Layout} from 'antd';
 
 import Home from "./Home";
 import Art from "./Art";
 import Programs from "./Programs";
 
-const { Content, Footer } = Layout;
-
+const { Content} = Layout;
 class Main extends Component {
 
     state = {
@@ -23,46 +21,51 @@ class Main extends Component {
     }
 
     render(){
-        return (  
-            <div className="main">
+
+        /* custom css */
+        const navMenu = {
+            textAlign: 'center',
+            paddingTop: "50px",
+            borderBottom: '2px solid grey',
+            width: '70%',
+            margin: 'auto'
+        }
+        const navHeader = {
+            fontSize: '40px',
+        }
+        const navMenuItem = {
+            paddingLeft: '10px',
+            paddingRight:'10px',
+            fontColor: 'black',
+            fontSize: '20px',
+        }
+        const container = {
+            paddingTop: '60px',
+            width: '70%',
+            margin: 'auto',
+        }
+
+        return(
+            <div id="main">
                 <Router>
-                <Menu
-                    onClick={this.handleClick}
-                    selectedKeys={[this.state.current]}
-                    mode="horizontal"
-                    style={{backgroundColor:'#f8f4f9'}}
-                >
-                    <Menu.Item key="home" as={Link} to='/home'>
-                        <Link to="/"><Icon type="home" />Home</Link>
-                    </Menu.Item>
-                    <Menu.Item key="programs">
-                       <Link to="/programs"> <Icon type="smile" />Programs</Link>
-                    </Menu.Item>
-                        <Menu.Item key="art" as={Link} to='/art'>
-                        <Link to="/art"><Icon type="smile" />Art </Link>
-                    </Menu.Item>
-                    <Menu.Item disabled>
-                        <Icon type="user" /> Resume
-                    </Menu.Item>
-                </Menu>
-                <div className="container">
-                    <Layout className="layout">
-                        <Content style={{ padding: '0 50px', backgroundColor:'white'}}>
-                            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-                                <Route path="/" exact component={Home} />
-                                <Route path="/art" component={Art} />
-                                <Route path="/programs" component={Programs} />
-                            </div>     
-                        </Content>
-                        <Footer style={{ position:"fixed", bottom:"0", textAlign:'center',width:'100%', backgroundColor:'#f8f4f9'}}>
-                            <p>by Makena Kong</p>
-                        </Footer>
-                    </Layout>
-                </div>
+                    <div style={navMenu}>
+                    <h1 style={navHeader}>MAKENA KONG</h1>
+                    <h2>
+                        <Link style={navMenuItem} to="/">HOME</Link>
+                        <Link style={navMenuItem}  to="/programs">PROGRAMS</Link>
+                        <Link style={navMenuItem}  to="/art">ART</Link>
+                    </h2>
+                    </div>
+
+                    <div style={container}>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/art" component={Art} />
+                        <Route path="/programs" component={Programs} />      
+                    </div>
+
                 </Router>
             </div>
         );
     }
 }
-
 export default Main;

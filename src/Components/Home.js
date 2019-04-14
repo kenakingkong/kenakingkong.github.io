@@ -1,18 +1,53 @@
 import React, { Component } from 'react';
-import PageHeader from "./PageHeader";
-import { Row, Col } from 'antd';
+import Profile from "./Profile";
+import ArtBox from './ArtBox';
+import ProgramBox from "./ProgramBox";
 
 class Home extends Component {
-    render(){
-        const pageTitle = "Welcome!";
 
+    /*
+    if you want a page title
+    import PageHeader from "./PageHeader";
+    const pageTitle = "Welcome!";
+    <PageHeader pageTitle={pageTitle} />
+           
+                <Row>
+                    <Col span={6} offset={2}>
+                        <Profile />
+                    </Col>
+                    <Col span={12} >Put my grid display stuff here</Col>
+                </Row>
+    */
+
+    render(){
+
+        /**variables */
+        const programType = "programs";
+        const artType = "art";
+
+        /**css */
+        const leftCol = {
+            width: '30%',
+            paddingTop: '30px',
+            textAlign: 'center'
+        }
+        const rightCol = {
+            width: '70%',
+            marginLeft: '100px'
+        }
         return (
             <div id="home">
-                <PageHeader pageTitle={pageTitle} />
-                <Row>
-                    <Col span={16} push={8}>Put profile photo and content here</Col>
-                    <Col span={8} pull={16}>Put my grid display stuff here</Col>
-                </Row>
+                <div style={{display:'flex'}}>
+                    <div style={leftCol}>
+                        <Profile />
+                    </div>
+                    <div style={rightCol}>
+                        <h1>My Programs</h1>
+                        <ProgramBox />
+                        <h1>My Artwork</h1>
+                        <ArtBox />
+                    </div>
+                </div>
             </div>
         );
     }

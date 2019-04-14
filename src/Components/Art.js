@@ -7,7 +7,6 @@ class Art extends Component {
 
         return (
             <div id="art">
-                <PageHeader pageTitle={pageTitle} />
                 <p>Mauris sem velit, vehicula eget sodales vitae,
                 rhoncus eget sapien:</p>
                 <ol>
