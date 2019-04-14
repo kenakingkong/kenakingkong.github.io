@@ -1,7 +1,7 @@
-#Makena's Site :)
+# Makena's Site :)
 
-## My Program Portfolio
+### My Program Portfolio
 Collection of my computer science projects.
 
-## My Art Portfolio
+### My Art Portfolio
 Gallery of my artwork.
