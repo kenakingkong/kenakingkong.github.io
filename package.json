@@ -1,7 +1,8 @@
 {
-  "name": "my-site",
+  "name": "kenakingkong.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://kenakingkong.github.io",
   "dependencies": {
     "antd": "^3.16.3",
     "node-sass": "^4.11.0",
@@ -27,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
