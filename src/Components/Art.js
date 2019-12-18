@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PageHeader from "./PageHeader";
 
 class Art extends Component {
     render(){
-        const pageTitle = "My Art Portfolio";
+        //const pageTitle = "My Art Portfolio";
 
         return (
             <div id="art">

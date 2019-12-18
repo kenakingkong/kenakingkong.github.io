@@ -1,46 +1,50 @@
 import React, { Component } from 'react';
-import Mountains from "../assets/videos/GeometricMountains_Medium.mp4";
+import MountainVideo from "../assets/videos/GeometricMountains_Medium.mp4";
 
 class Landing extends Component {
     render(){
 
-        /* center items */
-        const headerTitle = {
-            color: 'color value',
-            textAlign: 'center',
-            //alignSelf: 'center',
-            height: '100%',
-            width: '100%',
-            marginTop: '20%',
-            position: 'fixed',
-            zIndex: '1',
-            backgroundColor: 'transparent',
-            opacity: '0.8',
-            fontFamily: 'sans-serif',
-            fontWeight: 'bold'
-        };
-
-        const backgroundVid = {
-            height: '100%',
-             width: '100%',
-             top: '0px',
-             padding: 'none',
-             position: 'relative',
-             opacity: '0.2',
-             zIndex: '-1',
-            
-        };
+        const styles = {
+            videoContainer : {
+                position: 'relative',
+            },
+            videoStyle : {
+                height: 'auto',
+                width: '100%',
+                backgroundSize: 'cover',
+                verticalAlign: 'middle',
+                opacity: '0.2',
+                zIndex: '-1',
+            },
+            overlayDesc: {
+                position: 'absolute',
+                backgroundColor: 'transparent',
+                top: 0,
+                bottom: 0,
+                right: 0,
+                left: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            },
+            mainTitle:{
+                fontSize: 20
+            }
+        }
 
         return (
             <div id="landing" >
-                    <div style={headerTitle}>
-                        <h1 style={{fontSize:'75px'}}>MAKENA KONG</h1>
-                        {/*<button>ENTER</button>*/}
-                    </div>
-                <video className='videoTag' style={backgroundVid} autoPlay loop muted>
-                    <source src={Mountains} type='video/mp4' />
-                </video>
 
+                <div style={styles.videoContainer}>
+                    <video style={styles.videoStyle} autoPlay loop muted>
+                        <source src={MountainVideo} type='video/mp4' />
+                    </video>
+
+                    <div style={styles.overlayDesc}>
+                        <h2 style={styles.mainTitle}>MAKENA KONG</h2>
+                    </div>
+                
+                </div>
             </div>
         )
     }
