@@ -29,8 +29,8 @@ class Main extends Component {
             <div id="main">
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Makena</title>
-                    <meta name="description" content="Main Content"/>
+                    <title>Makena Kong</title>
+                    <meta name="description" content="Some of my projects - more to come!!!!"/>
                     {/*<link rel="canonical" href="http://mysite.com/example" />*/}
                 </Helmet>
                 
