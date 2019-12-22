@@ -1,20 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-//import './index.scss'
-//import App from './Components/App';
+import 'typeface-roboto';
+
 import Main from "./Components/Main";
 import * as serviceWorker from './serviceWorker';
 
-
-/*
-class Welcome extends React.Component {
-    render() {
-      return <h1>Hello World</h1>;
-    }
-  }*/
-
-//ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<Main />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

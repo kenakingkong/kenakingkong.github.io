@@ -1,48 +1,65 @@
 import React, { Component } from 'react';
-import {Container, Grid} from "@material-ui/core";
-import Landing from "./Landing";
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import posed from 'react-pose';
+import {Typography} from "@material-ui/core";
+import { withStyles} from '@material-ui/core/styles';
+
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+    quiz: {
+        marginTop: theme.spacing(10),
+    },
+    quizPrompt: {
+        marginBottom: theme.spacing(5),
+        fontWeight: 'bold',
+    },
+    quizOption: {
+        marginBottom: theme.spacing(2),
+        fontWeight: 'bold'
+    }, 
+    optionLink: {
+        textDecoration: 'none',
+        color: '#000',
+    }
+  });
 
 class Home extends Component {
-
     render(){
+        const {classes} = this.props;
+
         return (
-            <div id="home">
-            <Container maxWidth={'xl'} style={{marginTop: '1%'}}>
-                <Grid container spacing={3}>
-
-                    <Grid item xs={12} sm={6} md={6} lg={6}>
-                        <Landing/>
-                    </Grid>
-
-                    {/**Feed my pets! */}
-                    <Grid item xs={12} sm={6} md={6} lg={6}>
-                        <div className="glitch-embed-wrap" style={{height:'525px'}}>
-                            <iframe
-                                src="https://glitch.com/embed/#!/embed/makenas-virtual-pet?path=server.js&previewSize=100"
-                                title="makenas-virtual-pet on Glitch"
-                                allow="geolocation; microphone; camera; midi; vr; encrypted-media"
-                                style={{height: '100%', width: '100%', border: '0'}}>
-                            </iframe>
-                        </div>
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <div className="glitch-embed-wrap" style={{height:'600px'}}>
-                            <iframe
-                                src="https://glitch.com/embed/#!/embed/weather-boi?path=public/service-worker.js&previewSize=100"
-                                title="weather-boi on Glitch"
-                                allow="geolocation; microphone; camera; midi; vr; encrypted-media"
-                                style={{height: '100%', width: '100%', border: '0'}}>
-                            </iframe>
-                        </div>
-                    </Grid>
-                        
-                </Grid>  
-                </Container> 
-                
+            <div id="home" className={classes.root}>
+                <div className={classes.quiz}>
+                    <Typography variant="h3" className={classes.quizPrompt}>
+                        PICK ONE:
+                    </Typography>
+                    <div className={classes.quizOption}>
+                        <Typography variant="h5" className={classes.quizOption}>
+                            FEED MY PETS
+                        </Typography>
+                    </div> 
+                    <Typography variant="h5" className={classes.quizOption}>
+                        <Link to="/projects" className={classes.optionLink}>
+                            VIEW MY PROJECTS
+                        </Link>
+                    </Typography> 
+                    <Typography variant="h5" className={classes.quizOption}>
+                        <Link to="/me" className={classes.optionLink}>
+                            LEARN ABOUT ME
+                        </Link>
+                    </Typography> 
+                </div>   
             </div>
         );
     }
 }
 
-export default Home;
+Home.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Home);

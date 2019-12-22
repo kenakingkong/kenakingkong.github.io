@@ -1,84 +1,66 @@
 import React, { Component } from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import {Helmet} from "react-helmet";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { createMuiTheme , ThemeProvider} from '@material-ui/core/styles';
+import {Container} from '@material-ui/core';
 
-import {Container, Tabs, Tab, Paper} from "@material-ui/core";
-import CodeIcon from '@material-ui/icons/Code';
-import BrushIcon from '@material-ui/icons/Brush';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import MyMenu from './MyMenu';
+import Home from './Home';
+import Projects from './Projects';
+import About from './About';
 
-import Home from "./Home";
-import Art from "./Art";
-import Programs from "./Programs";
-import Profile from "./Profile";
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#886783',
+      main: '#6B4164',
+      dark: '#4a2d46',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#d7cb68',
+      main: '#CDBF43',
+      dark: '#8f852e',
+      contrastText: '#000',
+    }
+  },
+});
   
 class Main extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {currentTab : "home"};
-    }
-
-    handleChange = (event, newValue) => {
-        this.setState({currentTab: newValue});
-    };
-
     render(){
+
+        const containerStyle = {
+            marginLeft: theme.spacing(25),
+            marginRight: theme.spacing(25)
+        }
 
         return(
             <div id="main">
+
+                {/** Manage Document Head */}
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Makena Kong</title>
                     <meta name="description" content="Some of my projects - more to come!!!!"/>
                     {/*<link rel="canonical" href="http://mysite.com/example" />*/}
+                    {/* add more information */}
                 </Helmet>
-                
-                    {/*<Router>
 
-                         {/**NavBar *
-                         <Container maxWidth={'xl'} style={{marginTop: '5%'}}>
+                <ThemeProvider theme={theme}>
 
-                            <Paper square >
-                                <Tabs
-                                    value={this.state.currentTab}
-                                    onChange={this.handleChange}
-                                    variant="fullWidth"
-                                    indicatorColor="secondary"
-                                    textColor="primary"
-                                    aria-label="icon label tabs example"
-                                    >
-                                        {/*<Tab icon={<Avatar alt="Makena Kong" src={myFace} />}  label="MAKENA KONG"/>
-                                        <Tab label="MAKENA KONG" value="home"/>
-                                        <Tab icon={<CodeIcon />} label="PROJECTS" value="projects"/>
-                                        <Tab icon={<BrushIcon />} label="ARTWORK" value="artwork"/>
-                                        <Tab icon={<EmojiPeopleIcon />} label="ABOUT" value="about" onClick={() => this.props.history.push("/about")}/>
-                                </Tabs>
-                            </Paper>
+                    <Router>
+                        <MyMenu />
+
+                        <Container maxWidth={false} style={containerStyle}>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/projects" component={Projects} />
+                            <Route path="/me" component={About} />
                         </Container>
 
-                        {/**Content *
-                        <Switch>
-                            <Route path="/">
-                                <Home/>
-                            </Route>
-                            <Route path="/projects">
-                                <Programs/>
-                            </Route>
-                            <Route path="/artwork">
-                                <Art />
-                            </Route>
-                            <Route path="/about">
-                                <Profile />
-                            </Route>
-                        </Switch>
+                    </Router>
 
-                    </Router>*/}
+                </ThemeProvider>
 
-                    <Profile />
-                    <Home/>
-               
-                
             </div>
         );
     }
