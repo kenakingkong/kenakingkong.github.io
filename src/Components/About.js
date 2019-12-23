@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {withStyles, Typography} from "@material-ui/core";
+import Resume from "../assets/Makena_Kong_Resume.pdf";
 
 const styles = theme => ({
     root: {
@@ -89,7 +90,7 @@ class About extends Component {
                    <div className={classes.itemRow}>
                         <div className={classes.item}>
                             <a  className={classes.link} target={newPage}
-                                href="/src/assets/Makena_Kong_Resume.pdf" download="Makena Kong's Resume">
+                                href={Resume} download="Makena Kong's Resume">
                                 <Typography variant="h6">RESUME</Typography>
                             </a>
                         </div>
@@ -104,9 +105,10 @@ class About extends Component {
                     <br></br>
                     <div className={classes.itemRow}>
                             <div className={classes.item}>
-                                <Link to="/art" className={classes.link}>
+                                <a  className={classes.link} target={newPage}
+                                    href="https://www.instagram.com/maks_ugly_ass_art/">
                                     <Typography variant="h6">ART</Typography>
-                                </Link>
+                                </a>
                             </div>
                     </div>
                </div>

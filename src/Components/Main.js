@@ -30,8 +30,10 @@ class Main extends Component {
     render(){
 
         const containerStyle = {
-            marginLeft: theme.spacing(25),
-            marginRight: theme.spacing(25)
+            //marginLeft: theme.spacing(25),
+            //marginRight: theme.spacing(25)
+            paddingLeft: theme.spacing(30),
+            paddingRight: theme.spacing(30),
         }
 
         return(
