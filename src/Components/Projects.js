@@ -1,38 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import firebase from '../Firebase.js';
 import {withStyles, Typography, IconButton} from "@material-ui/core";
 import CodeIcon from '@material-ui/icons/Code';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
-const filters = [
-    { name: "WEBSITES" , value: "website", color: "#4a2d46"},
-    { name: "PWAS" , value: "pwa", color: "#6B4164"},
-    { name: "SCHOOL PROJECTS", value: "school", color: "#886783"},
-]
-
 const defaultDescription = "THIS PROJECT HAS NO DESCRIPTION YET."
 const defaultImage = "code.png"
-
-const projects = [
-    { name: "FEED MY PETS" , 
-        description: "Feed my pets! They are made with javascript and glitch.", 
-        category: "pwa", link: "https://makenas-virtual-pet.glitch.me", code: "https://glitch.com/~makenas-virtual-pet", image: "feedmypets.png", date: ""},
-    { name: "WEATHER BOI" , 
-        description: "Download my weather app to your desktop or mobile - with a handrolled service worker made in javascript. Weather data comes from Dark Sky!", 
-        category: "pwa", link: "https://weather-boi.glitch.me", code: "https://glitch.com/~weather-boi", image: "weatherboi.png", date: ""},
-    { name: "THIS WEBSITE" , 
-        description: "Browse my website! Made with React, Firebase and hosted on Github.", 
-        category: "website", link: "https://kenakingkong.github.io", code: "https://github.com/kenakingkong/kenakingkong.github.io", image: "", date: ""},
-    { name: "POPSHOP WEBSITE" , 
-        description: "Redesign the soroity recruitment process! I made the website for this platform with Vue, AWS services, etc.", 
-        category: "website", link: "https://thisispopshop.com", code: "https://github.com/kenakingkong/thisispopshop", image: "popshopwebsite.png", date: ""},
-    { name: "CLOROX TAC WEBSITE" , 
-        description: "Spread your innovative ideas with Clorox! Rohan, Brennan and I made this website with React, Google App Engine, GCP and more.", 
-        category: "website", link: "", code: "", image: "", date: ""},
-    { name: "DOG ADOPTION PREDICTOR" , 
-    description: "Predict which dogs are most likely to be adopted. We built this program with python, Jupyter notebooks and sci-kit learn.", 
-    category: "school", link: "", code: "https://github.com/rohanvembar/dog-rescue-analysis", image: "", date: ""},
-]
 
 const styles = theme => ({
     root: {
@@ -105,7 +79,7 @@ const styles = theme => ({
         overflow: 'hidden'
     },
     projectDescription: {
-        maxWidth: theme.spacing(40),
+        maxWidth: theme.spacing(35),
         paddingLeft: theme.spacing(2),
         marginBottom: theme.spacing(2)
     },
@@ -124,10 +98,54 @@ class Projects extends Component {
         super(props);
         this.state = { 
             selectedFilter: "all",
-            selectedProject : "none" 
+            selectedProject : "none",
+            filters: [],
+            projects: []
         };
         this.selectFilter = this.selectFilter.bind(this);
         this.selectProject = this.selectProject.bind(this);
+        this.add = this.add.bind(this);
+    }
+
+    // populate page with data from database 
+    componentDidMount() {
+        const filtersRef = firebase.database().ref('projectFilters');
+        filtersRef.on('value', (snapshot) => { 
+            let items = snapshot.val();
+            let newState = [];
+            for (let item in items){
+                newState.push({
+                    id: item,
+                    name: items[item].name,
+                    value: items[item].value,
+                    color: items[item].color
+                });
+            }
+            this.setState(state => ({filters : newState}));
+        })
+
+        const projectsRef = firebase.database().ref('projects');
+        projectsRef.on('value', (snapshot) => {
+            let items = snapshot.val();
+            let newState = [];
+            for (let item in items){
+                newState.push({
+                    id: item,
+                    name: items[item].name,
+                    description: items[item].description,
+                    category: items[item].category,
+                    link: items[item].link,
+                    code: items[item].code,
+                    image: items[item].image,
+                    date: items[item].date
+                })
+            }
+            this.setState(state => ({projects: newState}))
+            //this.add(5, "Predict which dogs are most likely to be adopted. We built this program with python, Jupyter notebooks and sci-kit learn.");
+
+        })
+
+
     }
 
     //handle filter select
@@ -148,8 +166,26 @@ class Projects extends Component {
         }
     }
 
+    // sample add to database
+    add(id, content){
+        const item = this.state.projects[id];
+        console.log(this.state.projects)
+        console.log(item)
+        const itemsRef = firebase.database().ref("projects/" + id.toString() ).set({
+            name: item.name, 
+            description: content,
+            category: item.category, 
+            link: item.link, 
+            code: item.code, 
+            image: item.image,
+            date: item.date
+        })
+    };
+
     render(){
         const {classes} = this.props;
+        const filters = this.state.filters;
+        const projects = this.state.projects;
         const selectedFilter = this.state.selectedFilter;
         const selectedProject = this.state.selectedProject;
         const newPage = "_blank";
@@ -191,7 +227,7 @@ class Projects extends Component {
         // rnder selected projects details
         function renderProject(){
             if (selectedProject === "none") {return null}
-            const p = projects.find( function(item) { return item.name == selectedProject} );
+            const p = projects.find( function(item) { return item.name === selectedProject} );
             const image = (p.image === "") ? (defaultImage) : p.image;
             const description = (p.description === "") ? (defaultDescription) : p.description;
             return <div className={classes.projectDetails}>
@@ -218,10 +254,6 @@ class Projects extends Component {
                         </div>
                     </div>
         }
-
-        // testing firebase
-        //const firebaseFilters = firebase.database().ref('/projectFiters');
-        //console.log(firebaseFilters);
 
         return (
             <div id="project">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import {withStyles, Typography} from "@material-ui/core";
 import Resume from "../assets/Makena_Kong_Resume.pdf";
 
