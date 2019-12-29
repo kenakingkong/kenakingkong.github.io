@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import posed from 'react-pose';
 import {Typography} from "@material-ui/core";
 import { withStyles} from '@material-ui/core/styles';
 
@@ -19,7 +18,10 @@ const styles = theme => ({
     },
     quizOption: {
         marginBottom: theme.spacing(2),
-        fontWeight: 'bold'
+        cursor: 'pointer',
+        '&:hover':{
+            fontWeight: 'bold'
+        }
     }, 
     optionLink: {
         textDecoration: 'none',
@@ -28,31 +30,53 @@ const styles = theme => ({
   });
 
 class Home extends Component {
+    constructor(){
+        super();
+        this.state = {showingPets : false};
+        this.showPets = this.showPets.bind(this);
+    }
+
+    //handle/toggle showing pets
+    showPets(){
+        this.setState(state => ({ showingPets : !this.state.showingPets}));
+    }
+
     render(){
         const {classes} = this.props;
 
         return (
             <div id="home" className={classes.root}>
-                <div className={classes.quiz}>
-                    <Typography variant="h3" className={classes.quizPrompt}>
-                        PICK ONE:
-                    </Typography>
-                    <div className={classes.quizOption}>
-                        <Typography variant="h5" className={classes.quizOption}>
-                            FEED MY PETS
+                {this.state.showingPets 
+                    ?  
+                    <div className="glitch-embed-wrap" style={{height: 'auto', width: '100%'}}>
+                        <iframe
+                            src="https://glitch.com/embed/#!/embed/makenas-virtual-pet?path=README.md&previewSize=100"
+                            title="makenas-virtual-pet on Glitch"
+                            allow="geolocation; microphone; camera; midi; vr; encrypted-media"
+                            style={{height: '600px', width: '600px', border: '0'}}>
+                        </iframe>
+                    </div>
+                    : 
+                    <div className={classes.quiz}>
+                        <Typography variant="h3" className={classes.quizPrompt}>
+                            PICK ONE:
                         </Typography>
-                    </div> 
-                    <Typography variant="h5" className={classes.quizOption}>
-                        <Link to="/projects" className={classes.optionLink}>
-                            VIEW MY PROJECTS
-                        </Link>
-                    </Typography> 
-                    <Typography variant="h5" className={classes.quizOption}>
-                        <Link to="/me" className={classes.optionLink}>
-                            LEARN ABOUT ME
-                        </Link>
-                    </Typography> 
-                </div>   
+                        <div className={classes.quizOption} onClick={() => this.showPets()}>
+                            <Typography variant="h4" className={classes.quizOption}>
+                                FEED MY PETS
+                            </Typography>
+                        </div> 
+                        <Typography variant="h4" className={classes.quizOption}>
+                            <Link to="/projects" className={classes.optionLink}>
+                                VIEW MY PROJECTS
+                            </Link>
+                        </Typography> 
+                        <Typography variant="h4" className={classes.quizOption}>
+                            <Link to="/me" className={classes.optionLink}>
+                                LEARN ABOUT ME
+                            </Link>
+                        </Typography> 
+                    </div> }  
             </div>
         );
     }

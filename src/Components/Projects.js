@@ -14,16 +14,24 @@ const defaultDescription = "THIS PROJECT HAS NO DESCRIPTION YET."
 const defaultImage = "code.png"
 
 const projects = [
-    { name: "FEED MY PETS" , description: "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+    { name: "FEED MY PETS" , 
+        description: "Feed my pets! They are made with javascript and glitch.", 
         category: "pwa", link: "https://makenas-virtual-pet.glitch.me", code: "https://glitch.com/~makenas-virtual-pet", image: "feedmypets.png", date: ""},
-    { name: "WEATHER BOI" , description: "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+    { name: "WEATHER BOI" , 
+        description: "Download my weather app to your desktop or mobile - with a handrolled service worker made in javascript. Weather data comes from Dark Sky!", 
         category: "pwa", link: "https://weather-boi.glitch.me", code: "https://glitch.com/~weather-boi", image: "weatherboi.png", date: ""},
-    { name: "THIS WEBSITE" , description: "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+    { name: "THIS WEBSITE" , 
+        description: "Browse my website! Made with React, Firebase and hosted on Github.", 
         category: "website", link: "https://kenakingkong.github.io", code: "https://github.com/kenakingkong/kenakingkong.github.io", image: "", date: ""},
-    { name: "POPSHOP WEBSITE" , description: "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah bla", 
+    { name: "POPSHOP WEBSITE" , 
+        description: "Redesign the soroity recruitment process! I made the website for this platform with Vue, AWS services, etc.", 
         category: "website", link: "https://thisispopshop.com", code: "https://github.com/kenakingkong/thisispopshop", image: "popshopwebsite.png", date: ""},
-    { name: "CLOROX TAC WEBSITE" , description: "", category: "website", link: "", code: "", image: "", date: ""},
-    { name: "DOG ADOPTION PREDICTOR" , description: "", category: "school", link: "", code: "https://github.com/rohanvembar/dog-rescue-analysis", image: "", date: ""},
+    { name: "CLOROX TAC WEBSITE" , 
+        description: "Spread your innovative ideas with Clorox! Rohan, Brennan and I made this website with React, Google App Engine, GCP and more.", 
+        category: "website", link: "", code: "", image: "", date: ""},
+    { name: "DOG ADOPTION PREDICTOR" , 
+    description: "Predict which dogs are most likely to be adopted. We built this program with python, Jupyter notebooks and sci-kit learn.", 
+    category: "school", link: "", code: "https://github.com/rohanvembar/dog-rescue-analysis", image: "", date: ""},
 ]
 
 const styles = theme => ({
@@ -44,7 +52,6 @@ const styles = theme => ({
         display: 'flex',
         alignItems: "top",
         justifyContent: "center",
-        //border: "1px solid black"
     },
     title: {
         fontWeight: 'bold'
@@ -59,6 +66,9 @@ const styles = theme => ({
     },
     filterName: {
         float: 'left',
+        '&:hover':{
+            fontWeight: 'bold'
+        }
     },
     circle: {
         width: 20,
@@ -67,7 +77,7 @@ const styles = theme => ({
         float: 'left',
         marginTop: 6,
         marginRight: theme.spacing(1),
-        //backgroundColor: "#CDBF43"
+        //backgroundColor: "#CDBF43",
     },
     circleSelected: {
         width: 10,
@@ -82,9 +92,12 @@ const styles = theme => ({
     option: {
         marginBottom: theme.spacing(4),
         cursor: "pointer",
+        
     },
     optionName : {
-        //fontWeight: 'bold'
+        '&:hover': {
+            fontWeight: 'bold'
+        }
     },
     projectImage: {
         height: '300px',
@@ -97,9 +110,9 @@ const styles = theme => ({
         marginBottom: theme.spacing(2)
     },
     projectLink: {
-        //marginBottom : theme.spacing(1),
-        //display: 'inline-block'
-        marginRight: theme.spacing(2)
+        marginRight: theme.spacing(2),
+        textDecoration: 'none',
+        color: '#000',
     },
     projectIcon :{
         marginRight: theme.spacing(1)
@@ -117,6 +130,7 @@ class Projects extends Component {
         this.selectProject = this.selectProject.bind(this);
     }
 
+    //handle filter select
     selectFilter(val){
         if (val === this.state.selectedFilter){
             this.setState(state => ({selectedFilter: "all"}))
@@ -125,6 +139,7 @@ class Projects extends Component {
         }
     }
 
+    //handle project select
     selectProject(name){
         if (name === this.state.selectedProject){
             this.setState(state => ({selectedProject: "none"}))
@@ -137,7 +152,9 @@ class Projects extends Component {
         const {classes} = this.props;
         const selectedFilter = this.state.selectedFilter;
         const selectedProject = this.state.selectedProject;
+        const newPage = "_blank";
 
+        // easy access to images
         function importAll(r) {
             let images = {};
             r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -166,10 +183,12 @@ class Projects extends Component {
                             .map((p,ind) =>
                                 <div className={classes.option} key={ind} value={p.value}
                                      onClick={() => this.selectProject(p.name)}>
-                                    <Typography variant="h4" className={classes.optionName}>{p.name}</Typography> 
+                                    <Typography variant="h4" className={classes.optionName}>
+                                        {(selectedProject === p.name) ? <strong>{p.name}</strong> : p.name}
+                                    </Typography> 
                                 </div>)
 
-        // get project detail
+        // rnder selected projects details
         function renderProject(){
             if (selectedProject === "none") {return null}
             const p = projects.find( function(item) { return item.name == selectedProject} );
@@ -183,18 +202,26 @@ class Projects extends Component {
                                 {description}
                             </Typography>
                             {(p.link === "") ? null : 
-                                <IconButton className={classes.projectLink}>
-                                    <OpenInNewIcon className={classes.projectIcon}/>
-                                    <Typography variant="subtitle1">PROJECT</Typography>
-                                </IconButton>}
+                                <a href={p.link} target={newPage}  className={classes.projectLink}>
+                                    <IconButton>
+                                        <OpenInNewIcon className={classes.projectIcon}/>
+                                        <Typography variant="subtitle1">PROJECT</Typography>
+                                    </IconButton>
+                                </a>}
                             {(p.code === "") ? null : 
-                            <IconButton className={classes.projectLink}>
-                                <CodeIcon className={classes.projectIcon}/>
-                                <Typography variant="subtitle1">CODE</Typography>
-                            </IconButton>}
+                            <a href={p.code} target={newPage} className={classes.projectLink}>
+                                <IconButton >
+                                    <CodeIcon className={classes.projectIcon}/>
+                                    <Typography variant="subtitle1">CODE</Typography>
+                                </IconButton>
+                            </a>}
                         </div>
                     </div>
         }
+
+        // testing firebase
+        //const firebaseFilters = firebase.database().ref('/projectFiters');
+        //console.log(firebaseFilters);
 
         return (
             <div id="project">
@@ -223,8 +250,6 @@ class Projects extends Component {
                         {renderProject()}
                     </div>
                 </div>
-
-               
 
             </div>
         );

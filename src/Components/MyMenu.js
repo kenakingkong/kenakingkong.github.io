@@ -54,7 +54,12 @@ const menuStyles = theme => ({
     menuItemLink: {
         textDecoration: 'none',
         color: '#000',
-    }
+    },
+    item:  {
+        '&:hover' : {
+            fontWeight: 'bold'
+        }
+    },
   });
 
 
@@ -63,12 +68,11 @@ class MyMenu extends Component{
 
     constructor() {
         super();
-        this.state = {
-            showMenu: false,
-        }
+        this.state = {showMenu: false,}
         this.showMenu = this.showMenu.bind(this);
     }
 
+    // handle menu toggle
     showMenu(event) {
         event.preventDefault();
         this.setState({
@@ -79,13 +83,17 @@ class MyMenu extends Component{
     render(){
         const { classes } = this.props;
 
-        // menu items
+        // render menu items
         const menuItems = pages.map((page, index) =>
                                 <li className={classes.menuItem} key={index+page} value={page}>
                                     <Link to={page.link} className={classes.menuItemLink}>
-                                        <IconButton edge="start" color="inherit" aria-label="menu-item">
+                                        <IconButton edge="start" color="inherit" aria-label="menu-item" 
+                                                    disableFocusRipple={true} disableRipple={true} 
+                                                    style={{backgroundColor: 'transparent'}}>
                                             <DescriptionIcon className={classes.menuButtonIcon} />
-                                            <Typography variant="body1"> <strong>{page.name}</strong></Typography>
+                                            <Typography variant="h6" className={classes.item}> 
+                                                {page.name}
+                                            </Typography>
                                         </IconButton>
                                     </Link>
                                 </li>);
@@ -99,21 +107,18 @@ class MyMenu extends Component{
                     <Toolbar>
 
                         {/* File Icon and Button */}
-                        <div className={classes.menuButton} 
-                             onClick={this.showMenu}>
-                            <IconButton edge="start" color="inherit" aria-label="menu" >
+                        <div className={classes.menuButton} onClick={this.showMenu}>
+                            <IconButton edge="start" color="inherit" aria-label="menu"
+                                         disableFocusRipple={true} disableRipple={true}
+                                         style={{backgroundColor: 'transparent'}}>
                                 {this.state.showMenu 
                                     ? <FolderOpenIcon className={classes.menuButtonIcon} />
                                     : <FolderIcon className={classes.menuButtonIcon} />}
-                                <Typography variant="body1"> <strong>FILES</strong> </Typography>
+                                <Typography variant="h6" className={classes.item}> FILES </Typography>
                             </IconButton>
                         </div>
 
-                        {/* Brand Name Logo Thing 
-                        <Typography className={classes.brand} variant="h6" >
-                            MAKENA KONG
-                        </Typography>*/}
-
+                        {/**brand name logo thing */}
                         <img className={classes.brand} src={MyLogo} alt="Makena Kong"/>
 
                     </Toolbar>

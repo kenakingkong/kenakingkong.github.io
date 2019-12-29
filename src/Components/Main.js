@@ -28,7 +28,6 @@ const theme = createMuiTheme({
   
 class Main extends Component {
     render(){
-
         const containerStyle = {
             //marginLeft: theme.spacing(25),
             //marginRight: theme.spacing(25)
@@ -49,10 +48,11 @@ class Main extends Component {
                 </Helmet>
 
                 <ThemeProvider theme={theme}>
-
                     <Router>
+                        {/** header/nav bar + menu */}
                         <MyMenu />
 
+                        {/**render pages */}
                         <Container maxWidth={false} style={containerStyle}>
                             <Route exact path="/" component={Home} />
                             <Route path="/projects" component={Projects} />

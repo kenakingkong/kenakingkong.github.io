@@ -1,0 +1,59 @@
+{
+    "lastUpdated" : "12/25/2019",
+    "projectFilters" : [ 
+                        { "name": "WEBSITES" , "value": "website", "color": "#4a2d46"},
+                        { "name": "PWAS" , "value": "pwa", "color": "#6B4164"},
+                        { "name": "SCHOOL PROJECTS", "value": "school", "color": "#886783"}
+    ],
+    "projects" : [
+                    { 
+                        "name": "FEED MY PETS" , 
+                        "description": "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+                        "category": "pwa", 
+                        "link": "https://makenas-virtual-pet.glitch.me", 
+                        "code": "https://glitch.com/~makenas-virtual-pet", 
+                        "image": "feedmypets.png", 
+                        "date": ""
+                    },{ 
+                        "name": "WEATHER BOI" , 
+                        "description": "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+                        "category": "pwa", 
+                        "link": "https://weather-boi.glitch.me", 
+                        "code": "https://glitch.com/~weather-boi", 
+                        "image": "weatherboi.png", 
+                        "date": ""
+                    },{
+                        "name": "THIS WEBSITE" , 
+                        "description": "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah", 
+                        "category": "website", 
+                        "link": "https://kenakingkong.github.io", 
+                        "code": "https://github.com/kenakingkong/kenakingkong.github.io", 
+                        "image": "", 
+                        "date": ""},
+                    { 
+                        "name": "POPSHOP WEBSITE" , 
+                        "description": "blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah bla", 
+                        "category": "website", 
+                        "link": "https://thisispopshop.com", 
+                        "code": "https://github.com/kenakingkong/thisispopshop", 
+                        "image": "popshopwebsite.png", 
+                        "date": ""
+                    },{ "name": "CLOROX TAC WEBSITE" , 
+                        "description": "", 
+                        "category": "website", 
+                        "link": "", 
+                        "code": "", 
+                        "image": "", 
+                        "date": ""
+                    },{ 
+                        "name": "DOG ADOPTION PREDICTOR" , 
+                        "description": "", 
+                        "category": "school", 
+                        "link": "", 
+                        "code": "https://github.com/rohanvembar/dog-rescue-analysis", 
+                        "image": "", 
+                        "date": ""
+                    }
+                
+    ]
+}

@@ -19,6 +19,9 @@ const styles = theme => ({
         marginRight: theme.spacing(3),
         float: 'left',
         width: 75,
+        '&:hover':{
+            fontWeight: 'bold'
+        }
     }, 
     itemRow: {
         display: 'inline-block',
@@ -36,6 +39,19 @@ const styles = theme => ({
     link : {
         textDecoration: "none",
         color: "#3a3a3a",
+        '&:hover':{
+            fontWeight: 'bold'
+        }
+    },
+    itemLink: {
+        marginRight: theme.spacing(3),
+        float: 'left',
+        width: 75,
+        textDecoration: "none",
+        color: "#3a3a3a",
+        '&:hover':{
+            fontWeight: 'bold'
+        }
     }
 });
 
@@ -61,59 +77,57 @@ class About extends Component {
                        A CREATIVE PERSON THAT LIKES TO CREATE.
                    </Typography>
                </div>
-               
-               {/**links */}
-               <div className={classes.container}>
-                   <div className={classes.itemRow}>
-                        <div className={classes.item}>
-                            <a  className={classes.link} target={newPage}
-                                href="https://www.github.com/kenakingkong">
-                                <Typography variant="h6">GITHUB </Typography>
-                            </a>
-                        </div>
+                
+                {/**links */}
+                <div className={classes.container}>
+                    <div className={classes.itemRow}>
+                        <a className={classes.itemLink} target={newPage}
+                            href="https://www.github.com/kenakingkong">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                GITHUB 
+                            </Typography>
+                        </a>
                         <div className={classes.circle}></div>
-                        <div className={classes.item}>
-                            <a  className={classes.link} target={newPage}
-                                href="https://glitch.com/@kenakingkong">
-                                <Typography variant="h6">GLITCH</Typography>
-                            </a>
-                        </div>
+                        <a className={classes.itemLink} target={newPage}
+                            href="https://glitch.com/@kenakingkong">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                GLITCH
+                            </Typography>
+                        </a>
                         <div className={classes.circle}></div>
-                        <div className={classes.item}>
-                            <a  className={classes.link} target={newPage}
-                                href="https://www.linkedin.com/in/makenakong">
-                                <Typography variant="h6">LINKEDIN</Typography>
-                            </a>
-                        </div>
-                   </div>
-                   <br></br>
-                   <div className={classes.itemRow}>
-                        <div className={classes.item}>
-                            <a  className={classes.link} target={newPage}
-                                href={Resume} download="Makena Kong's Resume">
-                                <Typography variant="h6">RESUME</Typography>
-                            </a>
-                        </div>
-                        <div className={classes.circle}></div>
-                        <div className={classes.item}>
-                            <a  className={classes.link} target="_top"
-                                    href="mailto:kena.kong@gmail.com">
-                                <Typography variant="h6">EMAIL</Typography>
-                            </a>
-                        </div>
+                        <a className={classes.itemLink} target={newPage}
+                            href="https://www.linkedin.com/in/makenakong">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                LINKEDIN
+                            </Typography>
+                        </a>
                     </div>
                     <br></br>
                     <div className={classes.itemRow}>
-                            <div className={classes.item}>
-                                <a  className={classes.link} target={newPage}
-                                    href="https://www.instagram.com/maks_ugly_ass_art/">
-                                    <Typography variant="h6">ART</Typography>
-                                </a>
-                            </div>
+                        <a className={classes.itemLink} target={newPage}
+                            href={Resume} download="Makena Kong's Resume">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                RESUME
+                            </Typography>
+                        </a>
+                        <div className={classes.circle}></div>
+                        <a className={classes.itemLink} target="_top"
+                                href="mailto:kena.kong@gmail.com">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                EMAIL
+                            </Typography>
+                        </a>
+                    </div>
+                    <br></br>
+                    <div className={classes.itemRow}>
+                        <a className={classes.itemLink} target={newPage}
+                            href="https://www.instagram.com/maks_ugly_ass_art/">
+                            <Typography variant="h6" className={classes.itemLink}>
+                                ART
+                            </Typography>
+                        </a>
                     </div>
                </div>
-
-               
             </div>
         );
     }
