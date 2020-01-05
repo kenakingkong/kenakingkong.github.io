@@ -19,13 +19,17 @@ const styles = theme => ({
     projectContainer:{
         display: "flex",
         justifyContent: "space-between",
+        flexWrap: "wrap"
     },
     projectItems : {
+        width: "50%",
     },
     projectDetails: {
         display: 'flex',
         alignItems: "top",
-        justifyContent: "center",
+        justifyContent: "flex-end",
+        flexWrap: "wrap",
+        maxWidth: '40%',
     },
     title: {
         fontWeight: 'bold'
@@ -76,15 +80,17 @@ const styles = theme => ({
     projectImage: {
         height: '300px',
         width: '400px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        //marginRight: theme.spacing(2)
     },
     projectDescription: {
-        maxWidth: theme.spacing(35),
-        paddingLeft: theme.spacing(2),
-        marginBottom: theme.spacing(2)
+        maxWidth: '400px',
+        //paddingLeft: theme.spacing(2),
+        marginTop: theme.spacing(2),
+        textAlign: "left"
     },
     projectLink: {
-        marginRight: theme.spacing(2),
+        paddingRight: theme.spacing(2),
         textDecoration: 'none',
         color: '#000',
     },
@@ -234,23 +240,26 @@ class Projects extends Component {
                         <img className={classes.projectImage} 
                             src={images[image]} alt="?" />
                         <div className={classes.projectDescription}>
-                            <Typography variant="body1" className={classes.projectDescription}>
-                                {description}
-                            </Typography>
+                            
                             {(p.link === "") ? null : 
                                 <a href={p.link} target={newPage}  className={classes.projectLink}>
-                                    <IconButton>
+                                    <IconButton disableFocusRipple={true} disableRipple={true}
+                                         style={{padding: '0', backgroundColor: 'transparent'}}>
                                         <OpenInNewIcon className={classes.projectIcon}/>
                                         <Typography variant="subtitle1">PROJECT</Typography>
                                     </IconButton>
                                 </a>}
                             {(p.code === "") ? null : 
                             <a href={p.code} target={newPage} className={classes.projectLink}>
-                                <IconButton >
+                                <IconButton disableFocusRipple={true} disableRipple={true}
+                                         style={{backgroundColor: 'transparent', padding: '0'}}>
                                     <CodeIcon className={classes.projectIcon}/>
                                     <Typography variant="subtitle1">CODE</Typography>
                                 </IconButton>
                             </a>}
+                            <Typography variant="body1" className={classes.projectDescription}>
+                                {description}
+                            </Typography>
                         </div>
                     </div>
         }
@@ -276,7 +285,9 @@ class Projects extends Component {
                 <div className={classes.container}>
                     <div className={classes.projectContainer}>
                         {/**list of projects */}   
-                        <div>{projectItems}</div>
+                        <div className={classes.projectItems}>
+                            {projectItems}
+                        </div>
 
                         {/**project view */}
                         {renderProject()}
