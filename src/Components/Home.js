@@ -5,7 +5,6 @@ import {Typography, IconButton} from "@material-ui/core";
 import { withStyles} from '@material-ui/core/styles';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
-
 const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -82,7 +81,8 @@ class Home extends Component {
                         <Typography variant="h3" className={classes.quizPrompt}>
                             PICK ONE:
                         </Typography>
-                        <div className={classes.quizOption} onClick={() => this.showPets()}>
+                        <div className={classes.quizOption} 
+                            onClick={() => this.showPets()}>
                             <Typography variant="h4" className={classes.quizOption}>
                                 FEED MY PETS
                             </Typography>
@@ -104,7 +104,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Home);
