@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Typography, IconButton} from "@material-ui/core";
 import { withStyles} from '@material-ui/core/styles';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import {Animated} from 'react-animated-css';
 
 const styles = theme => ({
     root: {
@@ -78,25 +79,37 @@ class Home extends Component {
                     </div>
                     : 
                     <div className={classes.quiz}>
-                        <Typography variant="h3" className={classes.quizPrompt}>
-                            PICK ONE:
-                        </Typography>
-                        <div className={classes.quizOption} 
-                            onClick={() => this.showPets()}>
-                            <Typography variant="h4" className={classes.quizOption}>
-                                FEED MY PETS
+                        <Animated animationIn="bounceInLeft" animationOut="fadeOut" 
+                                    animationInDelay="0" isVisible={true}>
+                            <Typography variant="h3" className={classes.quizPrompt}>
+                                PICK ONE:
                             </Typography>
-                        </div> 
-                        <Typography variant="h4" className={classes.quizOption}>
-                            <Link to="/projects" className={classes.optionLink}>
-                                VIEW MY PROJECTS
-                            </Link>
-                        </Typography> 
-                        <Typography variant="h4" className={classes.quizOption}>
-                            <Link to="/me" className={classes.optionLink}>
-                                LEARN ABOUT ME
-                            </Link>
-                        </Typography> 
+                        </Animated>
+                        <Animated animationIn="bounceInLeft" animationOut="fadeOut" 
+                                    animationInDelay="100" isVisible={true}>
+                            <div className={classes.quizOption} 
+                                onClick={() => this.showPets()}>
+                                <Typography variant="h4" className={classes.quizOption}>
+                                    FEED MY PETS
+                                </Typography>
+                            </div> 
+                        </Animated>
+                        <Animated animationIn="bounceInLeft" animationOut="fadeOut" 
+                                    animationInDelay="150" isVisible={true}>
+                            <Typography variant="h4" className={classes.quizOption}>
+                                <Link to="/projects" className={classes.optionLink}>
+                                    VIEW MY PROJECTS
+                                </Link>
+                            </Typography> 
+                        </Animated>
+                        <Animated animationIn="bounceInLeft" animationOut="fadeOut" 
+                                    animationInDelay="200" isVisible={true}>
+                            <Typography variant="h4" className={classes.quizOption}>
+                                <Link to="/me" className={classes.optionLink}>
+                                    LEARN ABOUT ME
+                                </Link>
+                            </Typography> 
+                        </Animated>
                     </div> }  
             </div>
         );

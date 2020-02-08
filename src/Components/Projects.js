@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import firebase from '../Firebase.js';
 import {withStyles, Typography, IconButton} from "@material-ui/core";
+import {Animated} from 'react-animated-css';
 import CodeIcon from '@material-ui/icons/Code';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
@@ -209,11 +210,14 @@ class Projects extends Component {
                             .map((f, ind) => 
                                 <div className={classes.filterItem} key={ind} value={f.value}
                                     onClick={() => this.selectFilter(f.value)}>
-                                    {(selectedFilter === f.value) 
-                                        ? <div className={classes.circleSelected} 
-                                                style={{borderColor: f.color}}></div>
-                                        : <div className={classes.circle} style={{backgroundColor: f.color}}></div>}
-                                    <Typography variant="h6" className={classes.filterName}>{f.name}</Typography>
+                                    <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                                animationInDelay={(ind*500 + 1000).toString()}  isVisible={true}>
+                                        {(selectedFilter === f.value) 
+                                            ? <div className={classes.circleSelected} 
+                                                    style={{borderColor: f.color}}></div>
+                                            : <div className={classes.circle} style={{backgroundColor: f.color}}></div>}
+                                        <Typography variant="h6" className={classes.filterName}>{f.name}</Typography>
+                                    </Animated>
                                 </div>)
 
         // render projects
@@ -225,9 +229,12 @@ class Projects extends Component {
                             .map((p,ind) =>
                                 <div className={classes.option} key={ind} value={p.value}
                                      onClick={() => this.selectProject(p.name)}>
-                                    <Typography variant="h4" className={classes.optionName}>
-                                        {(selectedProject === p.name) ? <strong>{p.name}</strong> : p.name}
-                                    </Typography> 
+                                    <Animated animationIn="bounceInLeft" animationOut="fadeOut" 
+                                            animationInDelay={(ind*500 + 2500).toString()} isVisible={true}>
+                                        <Typography variant="h4" className={classes.optionName}>
+                                            {(selectedProject === p.name) ? <strong>{p.name}</strong> : p.name}
+                                        </Typography> 
+                                    </Animated>
                                 </div>)
 
         // rnder selected projects details
@@ -237,6 +244,8 @@ class Projects extends Component {
             const image = (p.image === "") ? (defaultImage) : p.image;
             const description = (p.description === "") ? (defaultDescription) : p.description;
             return <div className={classes.projectDetails}>
+                        <Animated animationIn="bounceInRight" animationOut="fadeOut" 
+                                    animationInDelay='0' isVisible={true}>
                         <img className={classes.projectImage} 
                             src={images[image]} alt="?" />
                         <div className={classes.projectDescription}>
@@ -261,6 +270,7 @@ class Projects extends Component {
                                 {description}
                             </Typography>
                         </div>
+                        </Animated>
                     </div>
         }
 
@@ -269,9 +279,12 @@ class Projects extends Component {
 
                 {/**page title */}
                 <div className={classes.container}> 
-                    <Typography variant="h3" className={classes.title}>
-                        PROJECTS
-                    </Typography>
+                    <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                        animationInDelay="500" isVisible={true}>
+                        <Typography variant="h3" className={classes.title}>
+                            PROJECTS
+                        </Typography>
+                    </Animated>
                 </div>
                
                 {/**filters */}

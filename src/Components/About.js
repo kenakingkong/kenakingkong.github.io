@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //import {Link} from 'react-router-dom';
 import {withStyles, Typography} from "@material-ui/core";
+import {Animated} from 'react-animated-css';
 import Resume from "../assets/Makena_Kong_Resume.pdf";
 
 const styles = theme => ({
@@ -66,67 +67,95 @@ class About extends Component {
 
                 {/**page title */}
                 <div className={classes.container}>
-                    <Typography variant="h3" className={classes.title}>
-                        ME
-                    </Typography>
+                        <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                    animationInDelay="500" isVisible={true}>
+                            <Typography variant="h3" className={classes.title}>
+                                ME
+                            </Typography>
+                        </Animated>
                </div>
 
                 {/**personal description */}
                <div className={classes.container}>
-                   <Typography variant="h4">
-                       A CREATIVE PERSON THAT LIKES TO CREATE.
-                   </Typography>
+                    <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                animationInDelay="1000" isVisible={true}>
+                        <Typography variant="h4">
+                            A CREATIVE PERSON THAT LIKES TO CREATE.
+                        </Typography>
+                   </Animated>
                </div>
                 
                 {/**links */}
                 <div className={classes.container}>
+                    <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="1500" isVisible={true}>
+                           
                     <div className={classes.itemRow}>
                         <a className={classes.itemLink} target={newPage}
                             href="https://www.github.com/kenakingkong">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                GITHUB 
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="2000" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        GITHUB 
+                                    </Typography>
+                                </Animated>
                         </a>
                         <div className={classes.circle}></div>
                         <a className={classes.itemLink} target={newPage}
                             href="https://glitch.com/@kenakingkong">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                GLITCH
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="2500" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        GLITCH
+                                    </Typography>
+                                </Animated>
                         </a>
                         <div className={classes.circle}></div>
                         <a className={classes.itemLink} target={newPage}
                             href="https://www.linkedin.com/in/makenakong">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                LINKEDIN
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="3000" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        LINKEDIN
+                                    </Typography>
+                                </Animated>
                         </a>
                     </div>
                     <br></br>
                     <div className={classes.itemRow}>
                         <a className={classes.itemLink} target={newPage}
                             href={Resume} download="Makena Kong's Resume">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                RESUME
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="3500" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        RESUME
+                                    </Typography>
+                                </Animated>
                         </a>
                         <div className={classes.circle}></div>
                         <a className={classes.itemLink} target="_top"
                                 href="mailto:kena.kong@gmail.com">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                EMAIL
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="4000" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        EMAIL
+                                    </Typography>
+                                </Animated>
                         </a>
                     </div>
                     <br></br>
                     <div className={classes.itemRow}>
                         <a className={classes.itemLink} target={newPage}
                             href="https://www.instagram.com/maks_ugly_ass_art/">
-                            <Typography variant="h6" className={classes.itemLink}>
-                                ART
-                            </Typography>
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" 
+                                            animationInDelay="4500" isVisible={true}>
+                                    <Typography variant="h6" className={classes.itemLink}>
+                                        ART
+                                    </Typography>
+                                </Animated>
                         </a>
                     </div>
+                    </Animated>
                </div>
             </div>
         );

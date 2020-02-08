@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
+import {Animated} from 'react-animated-css';
 import FolderIcon from '@material-ui/icons/Folder';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -85,6 +86,8 @@ class MyMenu extends Component{
 
         // render menu items
         const menuItems = pages.map((page, index) =>
+                            <Animated animationIn="bounceInDown" animationOut="fadeOut" 
+                                        animationInDelay={(index*200).toString()} isVisible={true}>
                                 <li className={classes.menuItem} key={index+page} value={page}>
                                     <Link to={page.link} className={classes.menuItemLink}>
                                         <IconButton edge="start" color="inherit" aria-label="menu-item" 
@@ -96,7 +99,8 @@ class MyMenu extends Component{
                                             </Typography>
                                         </IconButton>
                                     </Link>
-                                </li>);
+                                </li>
+                            </Animated>);
 
         return (
             <div className={classes.root}>
