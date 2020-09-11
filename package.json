@@ -4,17 +4,18 @@
   "private": true,
   "homepage": "http://kenakingkong.github.io",
   "dependencies": {
+    "@expo-google-fonts/dm-serif-display": "^0.1.0",
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
     "firebase": "^7.6.1",
-    "node-sass": "^4.11.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-pose": "^4.0.10",
+    "react-page-scroller": "^2.0.7-beta",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8",
-    "typeface-roboto": "0.0.75"
+    "react-router-hash-link": "^2.0.0",
+    "react-scripts": "^2.1.8",
+    "typeface-open-sans": "^0.0.75"
   },
   "scripts": {
     "start": "react-scripts start",

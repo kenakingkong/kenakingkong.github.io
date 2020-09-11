@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import 'typeface-roboto';
+import 'typeface-open-sans';
 
 import Main from "./Components/Main";
 import * as serviceWorker from './serviceWorker';

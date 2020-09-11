@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import {withStyles} from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
 import FolderIcon from '@material-ui/icons/Folder';
@@ -16,21 +17,21 @@ const pages = [
     },
     {
         name: "PROJECTS",
-        link: "/projects"
+        link: "/#projects"
     },
     { 
         name: "ME",
-        link: "/me"
+        link: "/#about"
     }
 ];
 
 const menuStyles = theme => ({
     root: {
-      flexGrow: 1,
-      backgroundColor: '#fefefe'
+      flexGrow: 1
     },
     boxStyle: {
         boxShadow: 'none',
+        background: 'transparent',
     },
     menuButtonIcon: {
       marginRight: theme.spacing(1),
@@ -42,9 +43,9 @@ const menuStyles = theme => ({
         marginRight: theme.spacing(1)
     },
     dropDown: {
-        
-        position: 'absolute',
-        backgroundColor: '#fefefe',
+        paddingTop: theme.spacing(8),
+        position: 'fixed',
+        backgroundColor: 'transparent',
         zIndex: 1
     },
     menuItem: {
@@ -100,8 +101,8 @@ class MyMenu extends Component{
 
         return (
             <div className={classes.root}>
-                <AppBar position="static" 
-                        color="inherit"
+                <AppBar position="fixed" 
+                        color="transparent"
                         className={classes.boxStyle}
                 >
                     <Toolbar>

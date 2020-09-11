@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import ReactPageScroller from 'react-page-scroller';
 import {Helmet} from "react-helmet";
 import { createMuiTheme , ThemeProvider} from '@material-ui/core/styles';
 import {Container} from '@material-ui/core';
@@ -27,10 +28,19 @@ const theme = createMuiTheme({
 });
   
 class Main extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { currentPage: null };
+      }
+    
+      handlePageChange = number => {
+        this.setState({ currentPage: number }); // set currentPage number, to reset it from the previous selected.
+      };
+
     render(){
+
         const containerStyle = {
-            //marginLeft: theme.spacing(25),
-            //marginRight: theme.spacing(25)
+            paddingTop: theme.spacing(20),
             paddingLeft: theme.spacing(30),
             paddingRight: theme.spacing(30),
         }
@@ -42,21 +52,30 @@ class Main extends Component {
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Makena Kong</title>
-                    <meta name="description" content="Some of my projects - more to come!!!!"/>
+                    <meta name="description" 
+                        content="A Full Stack Engineer who favors front end development and minimalist UI/UX design."/>
                     {/*<link rel="canonical" href="http://mysite.com/example" />*/}
                     {/* add more information */}
                 </Helmet>
 
                 <ThemeProvider theme={theme}>
                     <Router>
-                        {/** header/nav bar + menu */}
+                        {/** nav */}
                         <MyMenu />
 
-                        {/**render pages */}
+                        {/**content */}
                         <Container maxWidth={false} style={containerStyle}>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/projects" component={Projects} />
-                            <Route path="/me" component={About} />
+                            <Route path="/" >
+                                <ReactPageScroller
+                                    pageOnChange={this.handlePageChange}
+                                    customPageNumber={this.state.currentPage}
+                                    >
+                                    <Home />
+                                    <Projects />
+                                    <About />
+                                </ReactPageScroller>
+                            </Route>
+
                         </Container>
 
                     </Router>
