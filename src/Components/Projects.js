@@ -127,7 +127,7 @@ const Projects = () => {
                         variant="caption" 
                         className={classes.itemRowTitle}
                         gutterBottom>
-                        FILTERS BY
+                        FILTER BY
                     </Typography>
 
                     {filters}
@@ -138,7 +138,7 @@ const Projects = () => {
             {/* Content */}  
             <Carousel
                 responsive={responsive}
-                infinite={false}
+                infinite
                 swipeable
                 centerMode
                 keyBoardControl

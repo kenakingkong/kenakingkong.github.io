@@ -46,7 +46,7 @@ const Slide = (props) => {
 
          <Card className={classes.root} style={boxStyle}>
             <div className={classes.overlay}>
-               {(link && code) &&
+               {(link || code) &&
                   <CardActions className={classes.content}>
                      {link && 
                         <IconButton size="small" href={link} target={newPage}>

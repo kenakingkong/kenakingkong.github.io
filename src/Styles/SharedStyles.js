@@ -13,6 +13,7 @@ export const sharedStyles = makeStyles(theme => ({
       display: 'inline-block',
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2),
+      width: "100%"
    },
    itemRowTitle: {
       marginRight: theme.spacing(5),

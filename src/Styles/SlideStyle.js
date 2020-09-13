@@ -36,8 +36,9 @@ export const slideStyle = makeStyles(theme => ({
     },
   },
   content: {
-    padding: theme.spacing(5),
-    paddingBottom: '0'
+    padding: theme.spacing(4),
+    paddingBottom: theme.spacing(0),
+    marginBottom: theme.spacing(0),
   }
  }));
  

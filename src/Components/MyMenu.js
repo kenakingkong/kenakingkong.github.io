@@ -6,7 +6,7 @@ import {menuStyles} from '../Styles'
 import FolderIcon from '@material-ui/icons/Folder';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import DescriptionIcon from '@material-ui/icons/Description';
-import MyLogo from '../assets/mylogo.png';
+import MyLogo from '../Assets/mylogo.png';
 
 //ACTIVE PAGES
 const pages = [
