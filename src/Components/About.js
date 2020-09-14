@@ -1,72 +1,51 @@
 import React, {useState} from 'react';
+import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
 import {sharedStyles, rectStyle} from "../Styles";
 import MyAccordion from './MyAccordion';
 
-const profileInfo = [
-    {
-        platform: 'LINKEDIN',
-        link: 'https://www.linkedin.com/in/makenakong',
-        color: '#CD6443'
-    },{
-        platform: 'GITHUB',
-        link: 'https://www.github.com/kenakingkong',
-        color: '#CD8543'
-    }, {
-        platform: 'GLITCH',
-        link: 'https://www.glitch.com/@kenakingkong',
-        color: '#CDA643'
-    }, {
-        platform: 'MEDIUM',
-        link: 'https://www.medium.com/@makenakong',
-        color: '#CDC743'
-    }
-]
+const getProfileLinks = () => {
+    let links = [];
+    const linksRef = firebase.database().ref('profileLinks');
+    linksRef.on('value', (snapshot) => { 
+        let items = snapshot.val();
+        for (let item in items){
+            links.push({
+                id: item,
+                platform: items[item].platform,
+                link: items[item].link,
+                color: items[item].color
+            });
+        }
+    })
+    return links;
+}
 
-const profileSummary = [
-    {
-        id: 0,
-        title: "Full Stack Development",
-        details: {
-            languages: "Javascript | Python | Node | GraphQL",
-            cloud: "AWS | GCP",
-            other: "SQL | Git| | HTTP | REST | LINUX"
+const getProfileSummaries = () => {
+    let summaries = [];
+    const summaryRef = firebase.database().ref('profileSummary');
+    summaryRef.on('value', (snapshot) => {
+        let items = snapshot.val();
+        for (let item in items){
+            summaries.push({
+                id: item,
+                title: items[item].title,
+                details: items[item].details
+            })
         }
-    },
-    {
-        id: 1,
-        title: "Front end Development",
-        details: {
-            frameworks: "React | Vue | Flask |Django | Shiny",
-            libaries: "Bootsrap | Material UI | Bulma",
-            languages: "Javascript | HTML | CSS | JQuery"
-        }
-    },
-    {
-        id: 2,
-        title: "UI/UX Development & Design",
-        details: {
-            tools: "Figma | Adobe XD | Gimp",
-            skills: "Visual Design | Copywriting "
-        }
-    },
-    {
-        id: 3,
-        title: "Art & Illustration",
-        details: {
-            painting: "oil | acrylic | watercolor",
-            speciality: "dog portraiture"
-        }
-    },
-]
+    })
+    return summaries;
+}
+
 
 const About = () => {
+
     const classes = sharedStyles();
     const shapes = rectStyle();
 
     const newPage = "_blank";
 
-    const Profiles = profileInfo.map((profiles,index) => 
+    const Profiles = getProfileLinks().map((profiles,index) => 
         <a className={classes.itemLink} 
             target={newPage}
             href={profiles.link}>
@@ -87,7 +66,7 @@ const About = () => {
        setExpanded(newExpanded ? panel : false);
      };
 
-    const Summary = profileSummary.map((info, index) => 
+    const Summary = getProfileSummaries().map((info, index) => 
         <MyAccordion info={info} expanded={expanded} handleChange={expand} />
     )
 
@@ -102,16 +81,13 @@ const About = () => {
 
                 {/* Profiles */}
                 <div className={classes.itemRow}>
-
                     <Typography 
                         variant="caption" 
                         className={classes.itemRowTitle}
                         gutterBottom>
                         PROFILES
                     </Typography>
-
                     {Profiles}
-
                 </div>
 
                 {/* Content */} 

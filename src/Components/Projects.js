@@ -3,22 +3,22 @@ import firebase from '../Firebase.js';
 import {Typography} from "@material-ui/core";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import {sharedStyles,circleStyle} from "../Styles";
+import {sharedStyles, slideMenuStyle, circleStyle} from "../Styles";
 import Slide from './Slide';
 
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5
+      items: 6
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3
+      items: 5
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2
+      items: 1
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -69,6 +69,7 @@ const Projects = () => {
 
     const classes = sharedStyles();
     const shapes = circleStyle();
+    const menu = slideMenuStyle();
 
     const [filter, setFilter] = useState("all");
 
@@ -138,14 +139,15 @@ const Projects = () => {
             {/* Content */}  
             <Carousel
                 responsive={responsive}
-                infinite
+                infinite={false}
                 swipeable
                 centerMode
                 keyBoardControl
                 transitionDuration={500}
+                responsive={responsive}
                 containerClass="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
-                itemClass="carousel-item-padding-40-px"
+                itemClass={menu.itemClass}
                 >
                 {projects}
             </Carousel>

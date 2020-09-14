@@ -37,12 +37,15 @@ export const accordionSummaryStyle = makeStyles(theme => ({
     },
   },
   text: {
+    fontWeight:'normal',
     '&:hover': {
       fontWeight: 'bold'
     },
-    '&:active': {
-      fontWeight: 'bold'
-    },
+  },
+  activeText: {
+    fontWeight: 'bold',
+    textDecoration: 'underline',
+    textDecorationColor: '#CDA643',
   },
   expanded: {},
 }))

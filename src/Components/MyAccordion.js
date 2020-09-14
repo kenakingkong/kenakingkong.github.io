@@ -46,7 +46,10 @@ const MyAccordion = (props) => {
                id={`${id}d-content`}>
                <Typography variant="h4" gutterBottom
                   className={class_as.text}>
-                  {summary}
+                  <span className={`${(expanded === id) 
+                     ? class_as.activeText : ""}`}>
+                        {summary}
+                     </span>
                </Typography>
             </AccordionSummary>
             <AccordionDetails className={class_ad.root}>

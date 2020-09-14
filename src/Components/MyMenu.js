@@ -12,7 +12,7 @@ import MyLogo from '../Assets/mylogo.png';
 const pages = [
     {
         name: "HOME",
-        link: "/"
+        link: "/#home"
     },
     {
         name: "PROJECTS",
@@ -95,10 +95,13 @@ const MyMenu = () => {
                     </div>
 
                     {/**brand name logo thing */}
-                    <img 
-                        className={classes.brand} 
-                        src={MyLogo} 
-                        alt="Makena Kong"/>
+                    <Link to="/#home" className={classes.menuItemLink}>
+                        <img 
+                            className={classes.brand} 
+                            src={MyLogo} 
+                            alt="Makena Kong"/>
+                    </Link>
+
 
                 </Toolbar>
             </AppBar>
