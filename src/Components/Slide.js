@@ -9,7 +9,7 @@ import {slideStyle} from "../Styles";
 
 const defaultDescription = 
    "Oops - I haven't written the description for this project yet."
-const defaultImg = "https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/code.png?alt=media&token=6ea2b629-7b80-41bc-83ee-6834799f1616";
+const defaultImg = "https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/projects%2Fcode.png?alt=media&token=466b6439-70ea-4941-8f7c-44f46efa0d83";
 
 const Slide = (props) => {
 

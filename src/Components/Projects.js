@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import firebase from '../Firebase.js';
 import {Typography} from "@material-ui/core";
 import Carousel from 'react-multi-carousel';
@@ -7,29 +7,36 @@ import {sharedStyles, slideMenuStyle, circleStyle} from "../Styles";
 import Slide from './Slide';
 
 const responsive = {
-    superLargeDesktop: {
+    xl: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 5000, min: 1920 },
+        items: 4
+      },
+    lg: {
       // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 6
+      breakpoint: { max: 1920, min: 1280 },
+      items: 2
     },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5
+    md: {
+      breakpoint: { max: 1280, min: 960 },
+      items: 2
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1
+    sm: {
+      breakpoint: { max: 960, min: 600 },
+      items: 2
     },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
+    xs: {
+      breakpoint: { max: 600, min: 0 },
       items: 1
     }
   };
 
+//get filter info from firebase
+//returns a promise
 const getFilters = () => {
     let newFilters = [];
     const filtersRef = firebase.database().ref('projectFilters');
-    filtersRef.on('value', (snapshot) => { 
+    return filtersRef.once('value').then((snapshot) => { 
         let items = snapshot.val();
         for (let item in items){
             newFilters.push({
@@ -39,15 +46,16 @@ const getFilters = () => {
                 color: items[item].color
             });
         }
+        return newFilters;
     })
-    return newFilters;
 }
 
+//get project info from firebase
+//returns a promise
 const getProjects = () => {
     let newProjects = [];
-
     const projectsRef = firebase.database().ref('projects');
-    projectsRef.on('value', (snapshot) => {
+    return projectsRef.once('value').then((snapshot) => {
         let items = snapshot.val();
         for (let item in items){
             newProjects.push({
@@ -61,10 +69,10 @@ const getProjects = () => {
                 date: items[item].date
             })
         }
+        return newProjects;
     })
-    return newProjects;
 }
-
+    
 const Projects = () => {
 
     const classes = sharedStyles();
@@ -72,20 +80,33 @@ const Projects = () => {
     const menu = slideMenuStyle();
 
     const [filter, setFilter] = useState("all");
+    const [filters, setFilters] = useState([]);
+    const [projects, setProjects] = useState([]);
+
+    const defaultColor = "#fffeee";
+
+    // get filters & project data only once
+    useEffect(()=>{
+        getFilters()
+            .then((res) => setFilters(res))
+            .catch((err) => console.log(err))
+
+        getProjects()
+            .then((res) => setProjects(res))
+            .catch((err) => console.log(err))
+    }, []);
 
     //handle filter select
     const selectFilter = (val) => {
-        if (val === filter){
-            setFilter("all")
-        } else {
-            setFilter(val)
-        }
+        setFilter((val===filter) ? "all" : val)
     }
 
-    const filterItems = getFilters();
-    const filters = filterItems.map((f, ind) => 
-        <div className={classes.itemLink} key={ind} value={f.value}
-            ariaPressed={false}
+    // create filter elements
+    const createFilters = () => {
+        return filters.map((f, ind) => 
+        <div className={classes.itemLink} 
+            key={ind} value={f.value}
+            aria-pressed={false}
             onClick={() => selectFilter(f.value)}>
             {(filter === f.value) 
                 ? <span className={shapes.circleSelected} 
@@ -100,20 +121,26 @@ const Projects = () => {
                 {f.name}
             </Typography>
         </div>)
-        
-    const projects = getProjects()
-        .filter(function(p){
-            if (filter === "all") {return true}
-            return filter === p.category
-        })
-        .map((info, index) =>  {
-            let cat = filterItems.find((f) => f.value === info.category);
-            return (<Slide info={info} color={cat.color} />)
-    });
+    }
 
+    //create project elements
+    const createProjects = () => {
+        return projects.filter(function(p){
+            if (filter === "all") {return true}
+                return filter === p.category
+            })
+            .map((info, index) =>  {
+                let cat = filters.find((f) => f.value === info.category)
+                return (
+                    <Slide 
+                        info={info} 
+                        color={ cat ? cat.color : defaultColor} />)
+        })
+    }
 
     return (
-         <div id="projects" className={classes.root}>
+         <div id="projects" className={`${classes.root} ${classes.fullHeight}`}>
+                
             <div className={classes.content}>
                 
                 {/* page title */}
@@ -131,25 +158,23 @@ const Projects = () => {
                         FILTER BY
                     </Typography>
 
-                    {filters}
+                    {createFilters()}
 
                 </div>
             </div>
 
-            {/* Content */}  
+            {/* Content */} 
             <Carousel
-                responsive={responsive}
-                infinite={false}
                 swipeable
                 centerMode
                 keyBoardControl
                 transitionDuration={500}
                 responsive={responsive}
                 containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
+                removeArrowOnDeviceType={["xs", "sm"]}
                 itemClass={menu.itemClass}
                 >
-                {projects}
+                {createProjects()}
             </Carousel>
 
         </div>

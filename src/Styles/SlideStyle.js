@@ -44,11 +44,12 @@ export const slideStyle = makeStyles(theme => ({
  
  export const slideMenuStyle = makeStyles(theme => ({
    root: {
-
+     paddingRight: theme.spacing(20),
    },
    itemClass: {
      paddingLeft: theme.spacing(3),
      paddingRight: theme.spacing(3),
+
      [theme.breakpoints.down('sm')]: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
@@ -56,6 +57,10 @@ export const slideStyle = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       paddingLeft: theme.spacing(16),
       paddingRight: theme.spacing(16),
+    },
+    [theme.breakpoints.up('lg')]: {
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
     },
    }
  }))

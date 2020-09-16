@@ -2,10 +2,11 @@ import {makeStyles} from "@material-ui/core";
 
 export const accordionStyle = makeStyles(theme => ({
   root: {
-    width: '100%',
+    width: '50%',
     border: 'none',
     boxShadow: 'none',
     padding: theme.spacing(0),
+    background: 'transparent',
 
     '&:not(:last-child)': {
       borderBottom: 0,
@@ -45,7 +46,7 @@ export const accordionSummaryStyle = makeStyles(theme => ({
   activeText: {
     fontWeight: 'bold',
     textDecoration: 'underline',
-    textDecorationColor: '#CDA643',
+    textDecorationColor: '#CD6443',
   },
   expanded: {},
 }))

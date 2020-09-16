@@ -20,7 +20,7 @@ export const menuStyles = makeStyles(theme => ({
    dropDown: {
        paddingTop: theme.spacing(8),
        position: 'fixed',
-       backgroundColor: '#fefefe',
+       backgroundColor: 'transparent',
        zIndex: 1
    },
    menuItem: {

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Route, BrowserRouter as Router } from 'react-router-dom';
-import ReactPageScroller from 'react-page-scroller';
 import {Helmet} from "react-helmet";
 import {ThemeProvider} from '@material-ui/core/styles';
 import {theme} from '../Styles';
@@ -13,8 +12,6 @@ import Contact from './Contact';
 
 const Main = () => {
     
-    const [currentPage, setCurrentPage] = useState(null);
-
     return(
         <div id="main" >
 
@@ -35,17 +32,10 @@ const Main = () => {
                     <MyMenu />
 
                     <Route path="/" >
-                        <ReactPageScroller
-                            pageOnChange={(num) => setCurrentPage(num)}
-                            customPageNumber={currentPage}
-                            >
-                            <Home />
-                            <Projects />
-                            <About />
-                            <Contact />
-                            
-                            
-                        </ReactPageScroller>
+                        <Home />
+                        <Projects />
+                        <About />
+                        <Contact />
                     </Route>
 
                 </Router>

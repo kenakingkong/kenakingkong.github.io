@@ -19,8 +19,8 @@ export const theme = createMuiTheme({
    fontFamily: "'DM serif display, Open sans'",
    h1: {
        fontFamily: "DM serif display",
-       fontSize: '5.75rem', 
-       fontWeight: 'bold'
+       fontSize: '5.75rem',
+       lineHeight: '1',
    },
    h2: { //page titles
        fontFamily: "DM serif display",
@@ -29,6 +29,7 @@ export const theme = createMuiTheme({
    h3: { // large headline
        fontFamily: "Open sans",
        fontSize: '2.25rem', 
+       lineHeight: '2'
    },
    h4: { //card titles
        fontFamily: "DM serif display",
@@ -37,6 +38,7 @@ export const theme = createMuiTheme({
    subtitle1: {
        fontFamily: "Open sans",
        fontSize: '1.75rem', //20px
+       lineHeight: '2',
    },
    body1: { 
        fontFamily: "Open sans",

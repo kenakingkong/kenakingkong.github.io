@@ -5,6 +5,9 @@ export const sharedStyles = makeStyles(theme => ({
       flexGrow: 1,
       paddingTop: theme.spacing(15),
    }, 
+   fullHeight: {
+      height: '95vh'
+   },
    content: {
       paddingLeft: theme.spacing(30),
       paddingRight: theme.spacing(30),

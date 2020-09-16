@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
 import {sharedStyles, rectStyle} from "../Styles";
 import MyAccordion from './MyAccordion';
 
+// get profile links from firebase
+//returns a promimse
 const getProfileLinks = () => {
     let links = [];
     const linksRef = firebase.database().ref('profileLinks');
-    linksRef.on('value', (snapshot) => { 
+    return linksRef.once('value').then((snapshot) => { 
         let items = snapshot.val();
         for (let item in items){
             links.push({
@@ -17,14 +19,16 @@ const getProfileLinks = () => {
                 color: items[item].color
             });
         }
+        return links;
     })
-    return links;
 }
 
+// get profile summaries from firebase
+// returns a promise
 const getProfileSummaries = () => {
     let summaries = [];
     const summaryRef = firebase.database().ref('profileSummary');
-    summaryRef.on('value', (snapshot) => {
+    return summaryRef.once('value').then((snapshot) => {
         let items = snapshot.val();
         for (let item in items){
             summaries.push({
@@ -33,8 +37,8 @@ const getProfileSummaries = () => {
                 details: items[item].details
             })
         }
+        return summaries;
     })
-    return summaries;
 }
 
 
@@ -45,33 +49,57 @@ const About = () => {
 
     const newPage = "_blank";
 
-    const Profiles = getProfileLinks().map((profiles,index) => 
-        <a className={classes.itemLink} 
-            target={newPage}
-            href={profiles.link}>
-            <span
-                className={shapes.rect} 
-                style={{background: profiles.color}} />
-            <Typography 
-                variant="caption" 
-                className={classes.itemLink}
-                gutterBottom>
-                {profiles.platform}
-            </Typography>
-        </a>
-    );
-
+    const [profiles, setProfiles] = useState([]);
+    const [summaries, setSummaries] = useState([]);
     const [expanded, setExpanded] = useState(null);
-    const expand = (panel) => (event, newExpanded) => {
-       setExpanded(newExpanded ? panel : false);
-     };
 
-    const Summary = getProfileSummaries().map((info, index) => 
-        <MyAccordion info={info} expanded={expanded} handleChange={expand} />
-    )
+    // load firebase data once
+    useEffect(() => {
+        getProfileLinks()
+            .then((res) => setProfiles(res))
+            .catch((err) => console.log(err))
+        
+        getProfileSummaries()
+            .then((res) => setSummaries(res))
+            .catch((err) => console.log(err))
+    }, []);
+
+    // expand a panel & close others
+    const expand = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+      };
+
+    // generate profile link elements
+    const createProfileLinks = () => {
+        return profiles.map((profiles,index) => 
+            <a className={classes.itemLink} 
+                target={newPage}
+                href={profiles.link}>
+                <span
+                    className={shapes.rect} 
+                    style={{background: profiles.color}} />
+                <Typography 
+                    variant="caption" 
+                    className={classes.itemLink}
+                    gutterBottom>
+                    {profiles.platform}
+                </Typography>
+            </a>
+        );
+    }
+    
+    // generate profile summary elements
+    const createProfileSummaries = () => {
+        return summaries.map((info, index) => 
+            <MyAccordion 
+                info={info} 
+                expanded={expanded} 
+                handleChange={expand} />
+        )
+    }
 
     return(
-        <div id="about" className={classes.root}>
+        <div id="about" className={`${classes.root} ${classes.fullHeight}`}>
             <div className={classes.content}>
                 
                 {/* page title */}
@@ -87,11 +115,11 @@ const About = () => {
                         gutterBottom>
                         PROFILES
                     </Typography>
-                    {Profiles}
+                    {createProfileLinks()}
                 </div>
 
                 {/* Content */} 
-                {Summary}
+                {createProfileSummaries()}
                 
             </div>
         </div>
