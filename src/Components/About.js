@@ -1,26 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
-import {sharedStyles, rectStyle} from "../Styles";
+import {sharedStyles, theme} from "../Styles";
 import MyAccordion from './MyAccordion';
 
-// get profile links from firebase
-//returns a promimse
-const getProfileLinks = () => {
-    let links = [];
-    const linksRef = firebase.database().ref('profileLinks');
-    return linksRef.once('value').then((snapshot) => { 
-        let items = snapshot.val();
-        for (let item in items){
-            links.push({
-                id: item,
-                platform: items[item].platform,
-                link: items[item].link,
-                color: items[item].color
-            });
-        }
-        return links;
-    })
+const background = {
+    backgroundColor: "#BFD6DD",
+    paddingTop: theme.spacing(20), 
+    paddingBottom: theme.spacing(15)
 }
 
 // get profile summaries from firebase
@@ -34,31 +21,23 @@ const getProfileSummaries = () => {
             summaries.push({
                 id: item,
                 title: items[item].title,
-                details: items[item].details
+                details: items[item].details,
+                color: items[item].color,
             })
         }
         return summaries;
     })
 }
 
-
 const About = () => {
 
     const classes = sharedStyles();
-    const shapes = rectStyle();
-
-    const newPage = "_blank";
-
-    const [profiles, setProfiles] = useState([]);
+    
     const [summaries, setSummaries] = useState([]);
     const [expanded, setExpanded] = useState(null);
 
     // load firebase data once
     useEffect(() => {
-        getProfileLinks()
-            .then((res) => setProfiles(res))
-            .catch((err) => console.log(err))
-        
         getProfileSummaries()
             .then((res) => setSummaries(res))
             .catch((err) => console.log(err))
@@ -68,30 +47,12 @@ const About = () => {
     const expand = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
       };
-
-    // generate profile link elements
-    const createProfileLinks = () => {
-        return profiles.map((profiles,index) => 
-            <a className={classes.itemLink} 
-                target={newPage}
-                href={profiles.link}>
-                <span
-                    className={shapes.rect} 
-                    style={{background: profiles.color}} />
-                <Typography 
-                    variant="caption" 
-                    className={classes.itemLink}
-                    gutterBottom>
-                    {profiles.platform}
-                </Typography>
-            </a>
-        );
-    }
     
     // generate profile summary elements
     const createProfileSummaries = () => {
         return summaries.map((info, index) => 
             <MyAccordion 
+                key={`accordion-${index}`}
                 info={info} 
                 expanded={expanded} 
                 handleChange={expand} />
@@ -99,7 +60,8 @@ const About = () => {
     }
 
     return(
-        <div id="about" className={`${classes.root} ${classes.fullHeight}`}>
+        <div id="about" style={background}
+            className={classes.root}>
             <div className={classes.content}>
                 
                 {/* page title */}
@@ -107,18 +69,14 @@ const About = () => {
                     About
                 </Typography>
 
-                {/* Profiles */}
-                <div className={classes.itemRow}>
-                    <Typography 
-                        variant="caption" 
-                        className={classes.itemRowTitle}
-                        gutterBottom>
-                        PROFILES
-                    </Typography>
-                    {createProfileLinks()}
-                </div>
+                {/* Paragraph */}
+                <Typography className={classes.lessLessWidth} 
+                    variant="body1" component="p" gutterBottom>
+                    I’m <strong>Makena</strong> (pronouced muh·ken·nuh). I grew up in the San Francisco Bay Area and left only to attend <strong>Cal Poly</strong> San Luis Obispo to get a B.S in Computer Science and a Minor in Studio Art. 
+                    <br></br>
+                </Typography>
 
-                {/* Content */} 
+                {/* Accordion */} 
                 {createProfileSummaries()}
                 
             </div>

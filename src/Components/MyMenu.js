@@ -14,13 +14,13 @@ const pages = [
         name: "HOME",
         link: "/#home"
     },
-    {
-        name: "PROJECTS",
-        link: "/#projects"
-    },
     { 
         name: "ABOUT",
         link: "/#about"
+    },
+    {
+        name: "PROJECTS",
+        link: "/#projects"
     },
     {
         name: "CONTACT",

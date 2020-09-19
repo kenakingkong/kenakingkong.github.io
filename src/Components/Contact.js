@@ -3,6 +3,8 @@ import {Typography, IconButton} from "@material-ui/core";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import {sharedStyles, personStyle, pointStyle} from "../Styles";
 
+const background = {backgroundColor: "#E4DFCF"}
+
 const Contact = () => {
 
    const classes = sharedStyles();
@@ -10,7 +12,8 @@ const Contact = () => {
    const pointers = pointStyle();
 
    return(
-      <div id="contact" className={`${classes.root} ${classes.fullHeight}`}>
+      <div id="contact" style={background}
+         className={`${classes.root} ${classes.fullHeight}`}>
          <div className={classes.content}>
 
             <Typography variant="h2" gutterBottom>

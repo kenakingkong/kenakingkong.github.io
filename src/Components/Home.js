@@ -3,8 +3,11 @@ import {Typography} from "@material-ui/core";
 import {sharedStyles, skeletor, theme} from '../Styles';
 import 'react-multi-carousel/lib/styles.css';
 
-const text = {color: "#fefefe"}
 const background = {backgroundColor: "#2a2a2a"};
+const name = {color: "#fefefe", marginBottom: '0'}
+const header = {color: "#fefefe", marginBottom: '0', fontWeight: "bold"}
+const text = {color: "#fefefe", marginBottom: theme.spacing(10)}
+
 
 const Home = () => {
 
@@ -16,15 +19,20 @@ const Home = () => {
             className={`${classes.root} ${classes.fullHeight}`}>
             <div className={classes.content}>
 
-                <Typography variant="h1" component="h2" 
-                    style={text} gutterBottom>
+                <Typography variant="h2" component="h1" 
+                    style={name} gutterBottom>
                     Makena Kong
                 </Typography>
-                <Typography variant="subtitle1" style={text} gutterBottom>
+                <Typography variant="subtitle2" style={text} gutterBottom>
                     she/her/hers
                 </Typography>
-                <Typography variant="h3" style={text} >
-                    A <strong>Full Stack Engineer</strong> who favors front end development and impactful UI/UX design.
+                <Typography variant="h1" component="h2" 
+                    style={header} gutterBottom>
+                    WEB DEVELOPER & DESIGNER
+                </Typography>
+                <Typography className={classes.lessWidth}
+                    variant="subtitle1" style={text} gutterBottom>
+                    I am a full stack engineer who favors front end development and impactful UI/UX design. I focus on creativity, usability, and accessbility. 
                 </Typography>
 
                 <img 

@@ -8,6 +8,30 @@ export const sharedStyles = makeStyles(theme => ({
    fullHeight: {
       height: '95vh'
    },
+   lessWidth: {
+      width: '56%',
+      [theme.breakpoints.down('sm')]: {
+         width: '100%'
+       },
+       [theme.breakpoints.up('md')]: {
+         width: '100%'
+       },
+       [theme.breakpoints.up('lg')]: {
+         width: '56%'
+       },
+   },
+   lessLessWidth: {
+      width: '40%',
+      [theme.breakpoints.down('sm')]: {
+         width: '100%'
+       },
+       [theme.breakpoints.up('md')]: {
+         width: '100%'
+       },
+       [theme.breakpoints.up('lg')]: {
+         width: '40%'
+       },
+   },
    content: {
       paddingLeft: theme.spacing(30),
       paddingRight: theme.spacing(30),
@@ -50,7 +74,8 @@ export const sharedStyles = makeStyles(theme => ({
       '&:hover':{
           fontWeight: 'bold'
       },
-  },
+  }
+ 
  }))
 
 

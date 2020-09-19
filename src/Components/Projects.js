@@ -6,6 +6,8 @@ import 'react-multi-carousel/lib/styles.css';
 import {sharedStyles, slideMenuStyle, circleStyle} from "../Styles";
 import Slide from './Slide';
 
+const background = {backgroundColor: "#FBF6F6"}
+
 const responsive = {
     xl: {
         // the naming can be any, depends on you.
@@ -133,13 +135,15 @@ const Projects = () => {
                 let cat = filters.find((f) => f.value === info.category)
                 return (
                     <Slide 
+                        key={`slide-${index}`}
                         info={info} 
                         color={ cat ? cat.color : defaultColor} />)
         })
     }
 
     return (
-         <div id="projects" className={`${classes.root} ${classes.fullHeight}`}>
+         <div id="projects" style={background}
+            className={`${classes.root} ${classes.fullHeight}`}>
                 
             <div className={classes.content}>
                 

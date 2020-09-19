@@ -3,9 +3,15 @@ import Typography from '@material-ui/core/Typography';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import 
-   {sharedStyles, accordionStyle, accordionSummaryStyle, accordionDetailStyle}
-   from "../Styles";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {sharedStyles, accordionStyle, accordionSummaryStyle,     
+      accordionDetailStyle, theme} from "../Styles";
+
+const detailStyle = {
+   margin: theme.spacing(1),
+   paddingLeft: theme.spacing(5)
+}
+
 
 const MyAccordion = (props) => {
 
@@ -21,9 +27,16 @@ const MyAccordion = (props) => {
    const id = `panel${info.id}`;
    const summary = info.title;
    const details = info.details;
+   const color = info.color;
+
+   const weight = (expanded === id) ? 'bold' : "normal";
+   const decor = (expanded === id) ? 'underline' : "none";
+   const d_color = (expanded === id) ? color : "none";
 
    const Details = Object.keys(details).map((key, index) => 
-      <div className={classes.itemRow}>
+      <span className={classes.itemRow} 
+            style={detailStyle}
+            key={`accordion-row-${index}`}>
          <Typography 
             variant="caption" 
             className={classes.itemRowTitle}
@@ -31,7 +44,7 @@ const MyAccordion = (props) => {
             {key.toUpperCase()}
          </Typography>
          {details[key]}
-      </div>
+      </span>
    )
 
    return (
@@ -39,15 +52,22 @@ const MyAccordion = (props) => {
          <Accordion square 
             className={class_a.root}
             expanded={expanded === id} 
-            onChange={handleChange(id)}>
+            onChange={handleChange(id)}
+            >
             <AccordionSummary 
                className={class_as.root}
                aria-controls={`${id}d-content`} 
                id={`${id}d-content`}>
                <Typography variant="h4" gutterBottom
                   className={class_as.text}>
-                  <span className={`${(expanded === id) 
-                     ? class_as.activeText : ""}`}>
+                  <ExpandMoreIcon 
+                     className={`${(expanded === id) ? 
+                        class_as.toggleUp : class_as.toggleDown}`}
+                     style={{color: color}} />
+                  <span style={{
+                     fontWeight : weight, 
+                     textDecoration: decor, 
+                     textDecorationColor: d_color}}>
                         {summary}
                      </span>
                </Typography>

@@ -43,12 +43,17 @@ export const accordionSummaryStyle = makeStyles(theme => ({
       fontWeight: 'bold'
     },
   },
-  activeText: {
-    fontWeight: 'bold',
-    textDecoration: 'underline',
-    textDecorationColor: '#CD6443',
-  },
   expanded: {},
+  toggleDown : {
+    transform: 'rotate(0deg)',
+    transformOrigin: 'center center',
+    paddingRight: theme.spacing(1),
+  },
+  toggleUp : {
+    transform: 'rotate(-180deg)',
+    transformOrigin: 'center center',
+    paddingLeft: theme.spacing(1),
+  }
 }))
 
 export const accordionDetailStyle = makeStyles(theme => ({

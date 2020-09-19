@@ -9,6 +9,7 @@ import Home from './Home';
 import Projects from './Projects';
 import About from './About';
 import Contact from './Contact';
+import Testimonials from './Testimonials';
 
 const Main = () => {
     
@@ -33,8 +34,9 @@ const Main = () => {
 
                     <Route path="/" >
                         <Home />
-                        <Projects />
                         <About />
+                        <Projects />
+                        <Testimonials />
                         <Contact />
                     </Route>
 
