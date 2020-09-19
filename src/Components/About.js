@@ -5,7 +5,7 @@ import {sharedStyles, theme} from "../Styles";
 import MyAccordion from './MyAccordion';
 
 const background = {
-    backgroundColor: "#BFD6DD",
+    backgroundColor: "#D7E6EA",
     paddingTop: theme.spacing(20), 
     paddingBottom: theme.spacing(15)
 }

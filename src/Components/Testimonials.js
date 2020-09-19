@@ -3,6 +3,8 @@ import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
 import {sharedStyles, theme} from "../Styles";
 
+import SocialBox from './SocialBox';
+
 const background = {
     backgroundColor: "#BFB5BE",
     paddingTop: theme.spacing(15), 
@@ -63,8 +65,10 @@ const Testimonials = () => {
                 {/* Paragraph */}
                 <Typography className={classes.lessLessWidth} 
                     variant="body1" component="p" gutterBottom>
-                    This is a quote from whoever and whenever
+                    This is awkward. They are coming, I promise.
                 </Typography>
+                
+                <SocialBox />
                 
             </div>
         </div>

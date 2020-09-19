@@ -4,3 +4,4 @@ export * from './MenuStyle';
 export * from './SlideStyle';
 export * from './AccordionStyle';
 export * from './MediaStyles';
+export * from './SocialBoxStyles';

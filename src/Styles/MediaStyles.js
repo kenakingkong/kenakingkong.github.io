@@ -1,11 +1,15 @@
 import {makeStyles} from "@material-ui/core"
 
-export const skeletor = makeStyles(theme => ({
-  root: {},
+export const skeletonStyle = makeStyles(theme => ({
+  root: {
+    transform: 'skewY(-11deg)',
+  },
   skeleton : {
-    zIndex: 2, 
+    zIndex: '2', 
     float: 'right', 
     marginRight: 0,
+    paddingLeft: theme.spacing(7),
+    paddingRight: theme.spacing(7),
     [theme.breakpoints.down('sm')]: {
       height: "100px",
     },
@@ -34,7 +38,8 @@ export const personStyle = makeStyles(theme => ({
       display: 'block',
       marginLeft: "auto",
       marginRight: "auto",
-      marginBottom: 0
+      marginBottom: 0,
+      width: "50px",
    },
    person:{
       display: 'block',
