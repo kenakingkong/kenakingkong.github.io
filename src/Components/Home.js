@@ -38,6 +38,7 @@ const Home = () => {
                 </Typography>
                 <Typography className={classes.lessWidth}
                     variant="subtitle1" style={text} gutterBottom>
+                        
                     I am a full stack engineer who favors front end development and impactful UI/UX design. I focus on creativity, usability, and accessbility. 
                 </Typography>
 

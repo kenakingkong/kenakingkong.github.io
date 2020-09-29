@@ -39,14 +39,14 @@ const Contact = () => {
 
          <div className={person.root}>
             <IconButton 
-               size="medium" 
                className={person.icon}  
                disableFocusRipple={true} 
                disableRipple={true}
                style={{backgroundColor: 'transparent'}}
                href="mailto:kena.kong@gmail.com">
-               <MailOutlineIcon fontSize="large" className={person.icon}/>
-            </IconButton>
+               <MailOutlineIcon fontSize="large"/>
+               &nbsp;&nbsp;kena.kong@gmail.com
+            </IconButton> 
             <img 
                className={person.person}
                alt="Picture of me in an orange dress."

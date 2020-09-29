@@ -6,6 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import {sharedStyles, slideMenuStyle, circleStyle} from "../Styles";
 import Slide from './Slide';
 
+
 const background = {backgroundColor: "#FBF6F6"}
 
 const responsive = {
@@ -108,8 +109,10 @@ const Projects = () => {
         return filters.map((f, ind) => 
         <div className={classes.itemLink} 
             key={ind} value={f.value}
-            aria-pressed={false}
-            onClick={() => selectFilter(f.value)}>
+            tabindex={0}
+            onClick={() => selectFilter(f.value)}
+            onKeyPress={({key}) => {if (key === 'Enter') selectFilter(f.value)}}
+            >
             {(filter === f.value) 
                 ? <span className={shapes.circleSelected} 
                     style={{border: `3px solid ${f.color}`}}/>
@@ -137,7 +140,8 @@ const Projects = () => {
                     <Slide 
                         key={`slide-${index}`}
                         info={info} 
-                        color={ cat ? cat.color : defaultColor} />)
+                        color={ cat ? cat.color : defaultColor} 
+                        tabindex={0} />)
         })
     }
 

@@ -36,8 +36,9 @@ const MyMenu = () => {
     const classes = menuStyles();
 
     const menuItems = pages.map((page, index) =>
-        <li className={classes.menuItem} key={index+page} value={page}>
-            <Link to={page.link} className={classes.menuItemLink}>
+        <li className={classes.menuItem} 
+            key={index+page} value={page} >
+            <Link to={page.link} className={classes.menuItemLink} tabindex={0}>
                 <IconButton 
                     edge="start" 
                     color="inherit" 
@@ -68,7 +69,7 @@ const MyMenu = () => {
                 <Toolbar>
 
                     {/* File Icon and Button */}
-                    <div 
+                    <div tabindex={0}
                         className={classes.menuButton} 
                         onClick={() => setShowingMenu(!showingMenu)}>
                         <IconButton

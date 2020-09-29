@@ -27,7 +27,8 @@ export const skeletonStyle = makeStyles(theme => ({
 export const personStyle = makeStyles(theme => ({
    root: {
       maxWidth: "60%",
-      transform: 'translate(35%, -35%)',
+      maxHeight: "100vh",
+      transform: 'translateX(10%)',
       zIndex: '1',
       marginTop: 0,
       [theme.breakpoints.down('sm')]: {
@@ -35,17 +36,19 @@ export const personStyle = makeStyles(theme => ({
       },
    },
    icon: {
-      display: 'block',
+     position: 'absolute',
       marginLeft: "auto",
       marginRight: "auto",
-      marginBottom: 0,
-      width: "50px",
+      marginBottom: theme.spacing(5),
+      marginTop: 'auto',
+      width: "100px"
    },
    person:{
-      display: 'block',
+      position: 'absolute',
       height: "800px",
       marginLeft: "auto",
       marginRight: "auto",
+      marginTop: theme.spacing(5),
       [theme.breakpoints.down('sm')]: {
          height: "500px",
        },

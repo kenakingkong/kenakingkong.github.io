@@ -7,7 +7,7 @@ export const socialBoxStyles = makeStyles(theme => ({
       backgroundColor: "#fff",
       margin: theme.spacing(10),
       padding: theme.spacing(2),
-      zIndex: '5', 
+      zIndex: '100', 
       float: 'right', 
    },
 }))

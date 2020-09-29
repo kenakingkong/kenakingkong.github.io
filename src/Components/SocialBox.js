@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
-import {socialBoxStyles} from "../Styles";
+import {socialBoxStyles, sharedStyles} from "../Styles";
 import { IconButton } from '@material-ui/core';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -33,6 +33,7 @@ const getProfileLinks = () => {
 const SocialBox = () => {
 
    const classes = socialBoxStyles();
+   const links = sharedStyles();
    const [profiles, setProfiles] = useState([]);
 
    const newPage = "_blank";
@@ -46,15 +47,22 @@ const SocialBox = () => {
 
    // generate profile link elements
    const createProfileLinks = () => {
-      return profiles.map((profiles,index) => {
+      return profiles.map((profile,index) => {
          return (
-            <IconButton 
-               key={`makena-${profiles.platform}`} 
+            <a target={newPage} 
+            href={profile.link}
+            key={`makena-${profile.platform}`} 
+            className={links.itemLink}> 
+            {profile.platform}
+            </a>
+            /*<IconButton 
+               key={`makena-${profile.platform}`} 
                target={newPage} 
-               href={profiles.link}
+               href={profile.link}
                size="medium" >
-                  {profiles.icon}
-            </IconButton>
+                  {profile.icon}
+            </IconButton>*/
+            
          )
       });
    }
