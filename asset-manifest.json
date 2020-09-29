@@ -10,8 +10,15 @@
   "index.html": "/index.html",
   "precache-manifest.fd5867841c5fa520ac59769cea19d23d.js": "/precache-manifest.fd5867841c5fa520ac59769cea19d23d.js",
   "service-worker.js": "/service-worker.js",
-  "static/css/2.778187bf.chunk.css.map": "/static/css/2.778187bf.chunk.css.map",
+  "static/css/2.56cf3bab.chunk.css.map": "/static/css/2.56cf3bab.chunk.css.map",
   "static/css/main.1fa3a19d.chunk.css.map": "/static/css/main.1fa3a19d.chunk.css.map",
-  "static/media/index.css": "/static/media/open-sans-latin-800italic.c62c3eea.woff2",
-  "static/media/styles.css": "/static/media/revicons.2feb69cc.eot"
+  "static/media/Makena_Kong_Resume.pdf": "/static/media/Makena_Kong_Resume.288c04df.pdf",
+  "static/media/code.png": "/static/media/code.71f75fae.png",
+  "static/media/compart.png": "/static/media/compart.9907c55b.png",
+  "static/media/feedmypets.png": "/static/media/feedmypets.518752b8.png",
+  "static/media/popshopwebsite.png": "/static/media/popshopwebsite.566be7ef.png",
+  "static/media/index.css": "/static/media/roboto-latin-900italic.ebf6d164.woff2",
+  "static/media/tacwebsite.png": "/static/media/tacwebsite.1740dafb.png",
+  "static/media/thiswebsite.png": "/static/media/thiswebsite.0999a3cf.png",
+  "static/media/weatherboi.png": "/static/media/weatherboi.a7342ff7.png"
 }
