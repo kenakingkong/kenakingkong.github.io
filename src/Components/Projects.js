@@ -3,11 +3,11 @@ import firebase from '../Firebase.js';
 import {Typography} from "@material-ui/core";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import {sharedStyles, slideMenuStyle, circleStyle} from "../Styles";
+import {sharedStyles, slideMenuStyle, circleStyle, theme} from "../Styles";
 import Slide from './Slide';
 
 
-const background = {backgroundColor: "#FBF6F6"}
+const background = {backgroundColor: "#FBF6F6",paddingBottom: theme.spacing(15)}
 
 const responsive = {
     xl: {
@@ -59,7 +59,7 @@ const getProjects = () => {
     let newProjects = [];
     const projectsRef = firebase.database().ref('projects');
     return projectsRef.once('value').then((snapshot) => {
-        let items = snapshot.val();
+        let items = snapshot.val()
         for (let item in items){
             newProjects.push({
                 id: item,
@@ -69,7 +69,8 @@ const getProjects = () => {
                 link: items[item].link,
                 code: items[item].code,
                 image: items[item].image,
-                date: items[item].date
+                date: items[item].date,
+                priority: items[item].priority,
             })
         }
         return newProjects;
@@ -134,6 +135,7 @@ const Projects = () => {
             if (filter === "all") {return true}
                 return filter === p.category
             })
+            .sort((a,b) => a.priority-b.priority)
             .map((info, index) =>  {
                 let cat = filters.find((f) => f.value === info.category)
                 return (
@@ -147,13 +149,12 @@ const Projects = () => {
 
     return (
          <div id="projects" style={background}
-            className={`${classes.root} ${classes.fullHeight}`}>
-                
+            className={classes.root}>
             <div className={classes.content}>
                 
                 {/* page title */}
                 <Typography variant="h2" gutterBottom>
-                    Projects
+                    what have i done?
                 </Typography>
 
                 {/* Profiles */}
@@ -181,6 +182,7 @@ const Projects = () => {
                 containerClass="carousel-container"
                 removeArrowOnDeviceType={["xs", "sm"]}
                 itemClass={menu.itemClass}
+                className={menu.root}
                 >
                 {createProjects()}
             </Carousel>

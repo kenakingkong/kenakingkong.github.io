@@ -2,49 +2,65 @@ import {makeStyles} from "@material-ui/core";
 
 export const slideStyle = makeStyles(theme => ({
    root: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(5),
-    marginLeft: theme.spacing(5),
-    marginRight: theme.spacing(5),
-    height: '350px',
-    width: '450px',
-    borderRadius: '3px',
-    backgroundSize: 'cover',
-    backgroudPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-   },
-   cardTitle: {
-    marginTop: theme.spacing(5),
-    marginLeft: theme.spacing(5),
+     width: '500px',
+     height: '350px',
+     borderRadius: '5px',
+     '&:hover': {
+       width: '525px',
+       height: '375px',
+       transition: 'all 0.25s'
+     }
+
    },
    overlay: {
-     color: 'transparent',
+    zIndex: '1',
+    width: '100%',
+    height: '100%',
+    borderRadius: '5px',
+    
+    background: 'rgba(77, 77, 77, .9)',
+    color: "#fff",
+    opacity: '0',
+    transition: 'all 0.5s',
 
-     '.icon': {
-      fill: 'transparent'
-    },
+    '&:hover': {
+      opacity: '1',
 
-    '&:hover, &:focus':{
-      height: '100%',
-      borderRadius: '2.5px',
-      backgroundColor: 'rgba(0,0,0,0.7)',
-      color: '#fff',
-
-      '.icon': {
-        fill: '#fff'
+      '& .head': {
+        transition: 'all 0.5s',
+        opacity: 1,
+      },
+      '& .subtitle': {
+        transition: 'all 0.5s',
+        opacity: 1,
+      },
+      '& .description': {
+        transition: 'all 0.5s',
+        opacity: 1,
+      },
+      '& .icon': {
+        transition: 'all 0.5s',
+        opacity: 1,
       }
-    },
-  },
-  content: {
-    padding: theme.spacing(4),
-    paddingBottom: theme.spacing(0),
-    marginBottom: theme.spacing(0),
-  }
- }));
+    }
+   },
+   content: {
+     padding: theme.spacing(5)
+   },
+   head: {
+     fontSize: '40px',
+     marginBottom: 0,
+   },
+   icon:{
+     color: "#fefefe",
+   }
+ }), {index: 1});
  
  export const slideMenuStyle = makeStyles(theme => ({
    root: {
      paddingRight: theme.spacing(20),
+     height: "375px",
+     marginTop: theme.spacing(5)
    },
    itemClass: {
      paddingLeft: theme.spacing(3),
@@ -63,4 +79,4 @@ export const slideStyle = makeStyles(theme => ({
       paddingRight: theme.spacing(1),
     },
    }
- }))
+ }), {index: 1})

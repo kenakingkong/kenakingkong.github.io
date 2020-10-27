@@ -1,20 +1,45 @@
 import React from 'react';
-import {Typography, Button} from "@material-ui/core";
+import { HashLink as Link } from 'react-router-hash-link';
+import {Typography, Grid} from "@material-ui/core";
 import {sharedStyles, skeletonStyle, theme} from '../Styles';
 import 'react-multi-carousel/lib/styles.css';
 
-const background = {backgroundColor: "#2a2a2a"};
-const name = {color: "#fefefe", marginBottom: '0'}
-const header = {color: "#fefefe", marginBottom: '0', fontWeight: "bold"}
-const text = {color: "#fefefe", marginBottom: theme.spacing(10)}
-const btn = {
-    color: "#fefefe", 
-    border: 'solid 1px #fefefe',
-    borderRadius: '20px', 
-    paddingLeft: theme.spacing(2), 
-    paddingRight: theme.spacing(2)
+const header = { 
+    fontWeight: "semi-bold", 
+    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
+    hyphens: 'auto',
+    lineHeight: '1.25',
+    fontSize: '80px'
 }
 
+const smallText = {
+    fontSize: '50px'
+}
+
+const moreGutter = {
+    marginBottom: theme.spacing(6)
+}
+
+const leftBackground = {
+    backgroundColor: "#E4DFCF"
+}
+const rightBackground = {
+    backgroundColor: "#000"
+}
+
+const leftDiv = {    
+    color: "#000",
+    paddingTop: theme.spacing(20),
+    marginLeft : theme.spacing(10),
+    marginRight : theme.spacing(5),
+}
+const rightDiv = {
+    color: "#E4DFCF",
+    paddingTop: theme.spacing(40),
+    marginLeft: theme.spacing(25),
+    marginRight: theme.spacing(5),
+}
 
 const Home = () => {
 
@@ -22,59 +47,62 @@ const Home = () => {
     const skel = skeletonStyle();
 
     return (
-        <div id="home" style={background}
-            className={`${classes.root} ${classes.fullHeight}`}>
-            <div className={classes.content}>
-
-                <Typography variant="h2" component="h1" style={name}>
-                    Makena Kong
-                </Typography>
-                <Typography variant="subtitle2" style={text} gutterBottom>
-                    she/her/hers
-                </Typography>
-                <Typography variant="h1" component="h2" 
-                    style={header} gutterBottom>
-                    WEB DEVELOPER & DESIGNER
-                </Typography>
-                <Typography className={classes.lessWidth}
-                    variant="subtitle1" style={text} gutterBottom>
-                        
-                    I am a full stack engineer who favors front end development and impactful UI/UX design. I focus on creativity, usability, and accessbility. 
-                </Typography>
-
-                <Button variant="outlined" style={btn}>
-                    <Typography variant="caption">
-                        CONTACT ME
+        <Grid container 
+        id="home"
+        justify="center" 
+        alignItems="start"
+        spacing={0} 
+        >
+            <Grid item 
+            xs={12} sm={8}
+            className={classes.fullHeight}
+            style={leftBackground}
+            >
+                <div style={leftDiv}>
+                    <Typography variant="h2" component="h1" style={header} >
+                        Hi, I'm Makena Kong 
+                        <span style={smallText}> (she/her)</span>. 
+                        I'm a&nbsp;
+                        <span className={classes.underlineMagical}>
+                        Web Developer and Designer</span>&nbsp;
+                        based in the San Francisco Bay Area.
                     </Typography>
-                </Button>
-
-                {/** Diagonal dancing skeletons */}
+                </div>
                 <div className={skel.root}>
                     <img 
-                        className={skel.skeleton}
-                        alt="Dancing Skeleton Gif"
-                        src="https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/dancing-skeleton.gif?alt=media&token=1192dd3b-7e14-4fa0-bdca-3d6f50add2da" 
-                        />
-                    <img 
-                        className={skel.skeleton}
-                        alt="Dancing Skeleton Gif"
-                        src="https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/dancing-skeleton.gif?alt=media&token=1192dd3b-7e14-4fa0-bdca-3d6f50add2da" 
-                        />
-                    <img 
-                        className={skel.skeleton}
-                        alt="Dancing Skeleton Gif"
-                        src="https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/dancing-skeleton.gif?alt=media&token=1192dd3b-7e14-4fa0-bdca-3d6f50add2da" 
-                        />
-                    <img 
-                        className={skel.skeleton}
-                        alt="Dancing Skeleton Gif"
-                        src="https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/dancing-skeleton.gif?alt=media&token=1192dd3b-7e14-4fa0-bdca-3d6f50add2da" 
-                        />
+                    className={skel.skeleton}
+                    alt="Dancing Skeleton Gif"
+                    src="https://firebasestorage.googleapis.com/v0/b/personal-site-fcbfd.appspot.com/o/dancing-skeleton.gif?alt=media&token=1192dd3b-7e14-4fa0-bdca-3d6f50add2da" 
+                    />
                 </div>
-    
-            </div>
-
-        </div>
+            </Grid>
+            <Grid 
+            item xs={12} sm={4}
+            className={classes.fullHeight}
+            style={rightBackground}
+            >
+                <div style={rightDiv}>
+                    <Typography variant="h1" component="h2" style={moreGutter}>
+                        <Link smooth to="/#about" 
+                        className={classes.underlineMoves}>
+                        who am i, really?
+                        </Link>
+                    </Typography>
+                    <Typography variant="h1" component="h2" style={moreGutter}>
+                        <Link smooth to="/#projects" 
+                        className={classes.underlineMoves}>
+                            what have i done?
+                        </Link>
+                    </Typography>
+                    <Typography variant="h1" component="h2" style={moreGutter}>
+                        <Link smooth to="/#contact" 
+                        className={classes.underlineMoves}>
+                            get in touch with me!
+                        </Link>
+                    </Typography>
+                </div>
+            </Grid>
+        </Grid>
     );
 }
 

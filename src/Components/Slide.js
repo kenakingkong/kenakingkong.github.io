@@ -1,8 +1,5 @@
 import React from 'react';
 import {Typography, IconButton} from "@material-ui/core";
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import OpenInNew from '@material-ui/icons/OpenInNew';
 import Code from '@material-ui/icons/Code';
 import {slideStyle} from "../Styles";
@@ -28,50 +25,42 @@ const Slide = (props) => {
    const date = info.date;
    const category = info.category;
 
-   const boxStyle = {
-      backgroundImage: `url(${image})`,
-      boxShadow: `0px 0px 20px 10px ${color}`
-   }
-
-   const iconStyle = {
-      fill: '#fff',
+   const img = {
+      background: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundColor: 'black',
+      backgroundPosition: 'center'
    }
 
    return (
-      <div>
-         <Typography variant="h4" gutterBottom noWrap
-            className={classes.cardTitle}>
-            {name}
-         </Typography>
-
-         <Card className={classes.root} style={boxStyle}>
-            <div className={classes.overlay}>
-               {(link || code) &&
-                  <CardActions className={classes.content}>
-                     {link && 
-                        <IconButton size="small" href={link} target={newPage}>
-                           <OpenInNew style={iconStyle}/> 
-                        </IconButton>}
-                        <br></br>
-                     {code && 
-                        <IconButton size="small" href={code} target={newPage}>
-                           <Code style={iconStyle}/> 
-                        </IconButton>}
-                  </CardActions>
+      <div className={classes.root} style={img}>
+         <div className={classes.overlay}>
+            <div className={classes.content}>
+               <Typography variant="h2" gutterBottom 
+               className={classes.head}>
+                  {name}
+               </Typography>
+               <Typography variant="subtitle" paragraph 
+               className={classes.subtitle}>
+                  {category}, {date}
+               </Typography>
+               <Typography variant="body2" gutterBottom 
+               className={classes.description}>
+                  {description}
+               </Typography>
+               {link && 
+                  <IconButton className={classes.icon} 
+                  href={link} target={newPage}>
+                     <OpenInNew />
+                  </IconButton>}
+               {code && 
+                  <IconButton className={classes.icon} 
+                  href={code} target={newPage}>
+                     <Code />
+                  </IconButton>
                }
-
-               <CardContent className={classes.content}>
-                  <Typography variant="body1" component="p">
-                     {description}
-                  </Typography>
-                  <br></br>
-                  <Typography variant="caption" component="p">
-                     {category}, {date}
-                  </Typography>
-               </CardContent>
-
-            </div>
-         </Card>
+               </div>
+         </div>
       </div>
    )
 };

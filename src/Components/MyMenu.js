@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import { AppBar, Toolbar, IconButton, Typography} from '@material-ui/core';
-import {menuStyles} from '../Styles'
+import { AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
+
 
 import FolderIcon from '@material-ui/icons/Folder';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -29,81 +29,71 @@ const pages = [
 ];
 
 
-const MyMenu = () => {
+
+const MyMenu = (props) => {
 
     const [showingMenu, setShowingMenu] = useState(false);
 
-    const classes = menuStyles();
+    const classes = props.classes;
 
     const menuItems = pages.map((page, index) =>
         <li className={classes.menuItem} 
             key={index+page} value={page} >
-            <Link to={page.link} className={classes.menuItemLink} tabindex={0}>
-                <IconButton 
-                    edge="start" 
-                    color="inherit" 
-                    aria-label="menu-item" 
-                    disableFocusRipple={true} 
-                    disableRipple={true} 
-                    style={{backgroundColor: 'transparent'}}
+            <Link smooth to={page.link} 
+            className={classes.menuItemLink} tabindex={index + 1}>
+                <Button 
+                edge="start" 
+                aria-label="menu-item" 
+                disableFocusRipple={true} 
+                disableRipple={true} 
+                startIcon={<DescriptionIcon 
+                className={classes.menuButtonIcon} />}
                 >
-                    <DescriptionIcon 
-                        className={classes.menuButtonIcon} />
-
                     <Typography 
-                        variant="body2" 
-                        className={classes.item}> 
+                    variant="body2" 
+                    className={classes.item}> 
                         {page.name}
                     </Typography>
-                </IconButton>
+                </Button>
             </Link>
         </li>
     );
 
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" 
-                    color="transparent"
-                    className={classes.boxStyle}
+            <AppBar 
+            position="fixed" 
+            className={classes.boxStyle}
             >
-                <Toolbar>
+                <Toolbar className={classes.blur}>
 
                     {/* File Icon and Button */}
-                    <div tabindex={0}
-                        className={classes.menuButton} 
-                        onClick={() => setShowingMenu(!showingMenu)}>
-                        <IconButton
-                            edge="start" 
-                            color="inherit" 
-                            aria-label="menu"
-                            disableFocusRipple={true} 
-                            disableRipple={true}
-                            style={{backgroundColor: 'transparent'}}
-                        >
-                            {showingMenu 
-                                ? 
-                                <FolderOpenIcon 
-                                    className={classes.menuButtonIcon} />
-                                : 
-                                <FolderIcon 
-                                    className={classes.menuButtonIcon} />}
-                            <Typography 
-                                variant="body2" 
-                                className={classes.item}>
-                                FILES 
-                            </Typography>
-                        </IconButton>
-                    </div>
+                    <Button
+                    tabindex={0}
+                    edge="start" 
+                    aria-label="menu"
+                    disableFocusRipple={true} 
+                    disableRipple={true}
+                    onClick={() => setShowingMenu(!showingMenu)}
+                    startIcon={showingMenu 
+                        ? <FolderOpenIcon className={classes.menuButtonIcon} />
+                        : <FolderIcon className={classes.menuButtonIcon} />
+                        }
+                    >
+                        <Typography variant="body2" lassName={classes.item}>
+                            FILES 
+                        </Typography>
+                    </Button>
 
+                    <span className={classes.root}></span>
+                
                     {/**brand name logo thing */}
-                    <Link to="/#home" className={classes.menuItemLink}>
-                        <img 
-                            className={classes.brand} 
-                            src={MyLogo} 
-                            alt="Makena Kong"/>
+                    <Link smooth to="/#home">
+                        <img  
+                        src={MyLogo} 
+                        alt="Makena Kong"/>
                     </Link>
-
-
+           
                 </Toolbar>
             </AppBar>
 

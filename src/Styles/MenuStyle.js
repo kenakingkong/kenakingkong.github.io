@@ -2,7 +2,10 @@ import {makeStyles} from "@material-ui/core";
 
 export const menuStyles = makeStyles(theme => ({
    root: {
-     flexGrow: 1
+     flexGrow: 1,
+   },
+   blur:{
+    backdropFilter: 'blur(2px)'
    },
    boxStyle: {
        boxShadow: 'none',
@@ -10,18 +13,14 @@ export const menuStyles = makeStyles(theme => ({
    },
    menuButtonIcon: {
      marginRight: theme.spacing(1),
-   },
-   menuButton: {
-     flexGrow: 1,
-   },
-   brand: {
-       marginRight: theme.spacing(1)
+     flexGrow: 1
    },
    dropDown: {
        paddingTop: theme.spacing(8),
        position: 'fixed',
        backgroundColor: 'transparent',
-       zIndex: 1
+       zIndex: 1,
+       backdropFilter: 'blur(5px)'
    },
    menuItem: {
        listStyleType: 'none',
@@ -36,4 +35,4 @@ export const menuStyles = makeStyles(theme => ({
            fontWeight: 'bold'
        }
    },
- }));
+ }), {index: 1});

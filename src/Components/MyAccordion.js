@@ -4,25 +4,24 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {sharedStyles, accordionStyle, accordionSummaryStyle,     
-      accordionDetailStyle, theme} from "../Styles";
+import {theme} from "../Styles";
+
+
 
 const detailStyle = {
    margin: theme.spacing(1),
    paddingLeft: theme.spacing(5)
 }
 
-
 const MyAccordion = (props) => {
-
-   const classes = sharedStyles();
-   const class_a = accordionStyle();
-   const class_as = accordionSummaryStyle();
-   const class_ad = accordionDetailStyle();
 
    const info = props.info;
    const expanded = props.expanded;
    const handleChange = props.handleChange;
+   const classes = props.classes;
+   const class_a = props.class_a;
+   const class_as = props.class_as;
+   const class_ad = props.class_ad;
 
    const id = `panel${info.id}`;
    const summary = info.title;

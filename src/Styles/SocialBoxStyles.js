@@ -10,4 +10,4 @@ export const socialBoxStyles = makeStyles(theme => ({
       zIndex: '100', 
       float: 'right', 
    },
-}))
+}), {index: 1})

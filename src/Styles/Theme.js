@@ -2,14 +2,14 @@ import {createMuiTheme} from '@material-ui/core/styles';
 
 export const theme = createMuiTheme({
  typography: {
-   fontFamily: "'DM serif display, Open sans'",
+   fontFamily: "'Playfair display, Open sans'",
    h1: {
        fontFamily: "Open Sans",
        fontSize: '4rem',
        lineHeight: '1',
    },
    h2: { //page titles
-       fontFamily: "DM serif display",
+       fontFamily: "Playfair display",
        fontSize: '3.25rem', 
    },
    h3: { // large headline
@@ -18,7 +18,7 @@ export const theme = createMuiTheme({
        lineHeight: '2'
    },
    h4: { //card titles
-       fontFamily: "DM serif display",
+       fontFamily: "Playfair display",
        fontSize: '2rem', //40pc
    },
    subtitle1: {
@@ -33,11 +33,11 @@ export const theme = createMuiTheme({
   },
    body1: { 
        fontFamily: "Open sans",
-       fontSize: '1.25rem', //16px
+       fontSize: '1.5rem', //16px
    },
    body2: {
        fontFamily: "Open sans",
-       fontSize: '1.15rem', //14px
+       fontSize: '1.25rem', //14px
    },
    caption: {
        fontFamily: "Open sans",

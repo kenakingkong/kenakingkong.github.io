@@ -3,7 +3,6 @@ import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
 import {sharedStyles, theme} from "../Styles";
 
-import SocialBox from './SocialBox';
 
 const background = {
     backgroundColor: "#BFB5BE",
@@ -67,8 +66,6 @@ const Testimonials = () => {
                     variant="body1" component="p" gutterBottom>
                     This is awkward. They are coming, I promise.
                 </Typography>
-                
-                <SocialBox />
                 
             </div>
         </div>

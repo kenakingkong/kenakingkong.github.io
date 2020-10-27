@@ -19,7 +19,7 @@ export const accordionStyle = makeStyles(theme => ({
     },
   },
   expanded: {},
-}))
+}), {index: 1})
 
 export const accordionSummaryStyle = makeStyles(theme => ({
   root: {
@@ -54,10 +54,10 @@ export const accordionSummaryStyle = makeStyles(theme => ({
     transformOrigin: 'center center',
     paddingLeft: theme.spacing(1),
   }
-}))
+}), {index: 1})
 
 export const accordionDetailStyle = makeStyles(theme => ({
   root: {
     padding: theme.spacing(0),
   },
-}))
+}), {index: 1})
