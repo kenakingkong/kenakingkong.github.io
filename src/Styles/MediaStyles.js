@@ -1,9 +1,7 @@
 import {makeStyles} from "@material-ui/core"
 
 export const skeletonStyle = makeStyles(theme => ({
-  root: {
-    
-  },
+  root: {},
   skeleton : {
     zIndex: '0', 
     transform: 'translateX(477.5%)',
@@ -71,13 +69,12 @@ export const pointStyle = makeStyles(theme => ({
    pointLeft: {
       float: 'right',
       marginRight: 0,
+      animation: `$bounceRight 3s infinite`
    },
    pointRight: {
       float: 'left',
       marginLeft: 0,
-   },
-   pointDown: {
-      
+      animation: `$bounceLeft 3s infinite`
    },
    bigPointer: {
       [theme.breakpoints.down('sm')]: {
@@ -92,19 +89,35 @@ export const pointStyle = makeStyles(theme => ({
        [theme.breakpoints.up('xl')]: {
          height: "600px",
        },
-      
    },
-   littlePointer: {
-
-   }
+   '@keyframes bounceLeft': {
+    '0%, 20%, 50%, 80%, 100%' : {
+      transform: 'translateX(-30px)',
+    },
+    '40%': {
+      transform: 'translateX(0px)',
+    },
+    '60%': {
+      transform: 'translateX(-15px)',
+    },
+  },
+  '@keyframes bounceRight': {
+    '0%, 20%, 50%, 80%, 100%' : {
+      transform: 'translateX(30px)',
+    },
+    '40%': {
+      transform: 'translateX(0px)',
+    },
+    '60%': {
+      transform: 'translateX(15px)',
+    },
+  },
 }), {index: 1})
 
 export const blobStyle = makeStyles(theme => ({
-  root: {
-  },
+  root: {},
   blob: {
     display: 'inline-block',
-    
     filter: 'drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7))',
   },
   marquee: {

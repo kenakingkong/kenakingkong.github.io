@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import { AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button} from '@material-ui/core';
 
 
 import FolderIcon from '@material-ui/icons/Folder';

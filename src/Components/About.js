@@ -63,6 +63,7 @@ const About = () => {
                             <a 
                             className={`${classes.underlineMovesBlack} ${classes.underlineMagical}`}
                             target="_blank"
+                            rel="noopener noreferrer"
                             href="http://art-by-makena-kong.s3-website.us-east-2.amazonaws.com/">
                                 <strong>art website</strong>
                             </a>
@@ -85,7 +86,8 @@ const About = () => {
                             <div className={blobs.marquee}>
                                 <Typography variant="body2" className={blobs.description}>
                                     <span>
-                                    {summaries[0] && Object.values(summaries[0].details)}</span>
+                                    {summaries[0] && 
+                                     Object.values(summaries[0].details)}</span>
                                 </Typography>
                             </div>
                         </div>
@@ -99,7 +101,8 @@ const About = () => {
                             <div className={blobs.marquee}>
                                 <Typography variant="body2" className={blobs.description}>
                                     <span>
-                                        {summaries[1] && Object.values(summaries[1].details)}
+                                        {summaries[1] && 
+                                         Object.values(summaries[1].details)}
                                     </span>
                                 </Typography>
                             </div>
@@ -114,7 +117,8 @@ const About = () => {
                             <div className={blobs.marquee}>
                                 <Typography variant="body2" className={blobs.description}>
                                     <span>
-                                    {summaries[2] && Object.values(summaries[2].details)}
+                                    {summaries[2] && 
+                                        Object.values(summaries[2].details)}
                                     </span>
                                 </Typography>
                             </div>

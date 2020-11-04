@@ -1,13 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import firebase from '../Firebase.js';
 import Typography from '@material-ui/core/Typography';
-import {sharedStyles, theme} from "../Styles";
-
-const background = {
-    backgroundColor: "#BFB5BE",
-    paddingTop: theme.spacing(15), 
-    paddingBottom: theme.spacing(15)
-}
+import {sharedStyles} from "../Styles";
 
 // get profile links from firebase
 //returns a promimse

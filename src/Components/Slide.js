@@ -15,7 +15,7 @@ const Slide = (props) => {
    const newPage = "_blank";
 
    const info = props.info;
-   const color = props.color;
+   //const color = props.color;
 
    const name = info.name;
    const image = info.image || defaultImg;
