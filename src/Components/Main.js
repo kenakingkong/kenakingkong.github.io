@@ -9,10 +9,11 @@ import Home from './Home';
 import Projects from './Projects';
 import About from './About';
 import Contact from './Contact';
+
  
 const Main = () => {
 
-    const menuClasses = menuStyles();
+    const menuClasses = menuStyles()
     
     return(
         <div id="main">

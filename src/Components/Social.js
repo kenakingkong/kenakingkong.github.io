@@ -45,7 +45,7 @@ const Social = () => {
     const createProfileLinks = () => {
        return profiles.map(profile => {
           return (
-            <Typography variant="h1" component="h2">
+            <Typography variant="h3" component="h2">
                 <a target={newPage} 
                 href={profile.link}
                 key={`makena-${profile.platform}`} 

@@ -5,12 +5,9 @@ import {sharedStyles, skeletonStyle, theme} from '../Styles';
 import 'react-multi-carousel/lib/styles.css';
 
 const header = { 
-    fontWeight: "semi-bold", 
     overflowWrap: 'break-word',
     wordWrap: 'break-word',
     hyphens: 'auto',
-    lineHeight: '1.25',
-    fontSize: '80px'
 }
 
 const smallText = {
@@ -59,7 +56,7 @@ const Home = () => {
             style={leftBackground}
             >
                 <div style={leftDiv}>
-                    <Typography variant="h2" component="h1" style={header} >
+                    <Typography variant="h1" component="h1" style={header} >
                         Hi, I'm Makena Kong 
                         <span style={smallText}> (she/her)</span>. 
                         I'm a&nbsp;
@@ -82,19 +79,19 @@ const Home = () => {
             style={rightBackground}
             >
                 <div style={rightDiv}>
-                    <Typography variant="h1" component="h2" style={moreGutter}>
+                    <Typography variant="h3" component="h2" style={moreGutter}>
                         <Link smooth to="/#about" 
                         className={classes.underlineMoves}>
                         who am i, really?
                         </Link>
                     </Typography>
-                    <Typography variant="h1" component="h2" style={moreGutter}>
+                    <Typography variant="h3" component="h2" style={moreGutter}>
                         <Link smooth to="/#projects" 
                         className={classes.underlineMoves}>
                             what have i done?
                         </Link>
                     </Typography>
-                    <Typography variant="h1" component="h2" style={moreGutter}>
+                    <Typography variant="h3" component="h2" style={moreGutter}>
                         <Link smooth to="/#contact" 
                         className={classes.underlineMoves}>
                             get in touch with me!

@@ -29,7 +29,7 @@ const Contact = () => {
          <div className={classes.content}>
 
             <Typography variant="h2" gutterBottom>
-                  you can reach me!
+                  get in touch with me!
             </Typography>
 
          </div>
@@ -61,7 +61,7 @@ const Contact = () => {
 
         
          <div style={footer}>
-            <Typography variant="h1" component="h2">
+            <Typography variant="h3" component="h2">
                <a 
                href="mailto:kena.kong@gmail.com"
                className={classes.underlineMovesBlack}>
